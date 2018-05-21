@@ -8,11 +8,17 @@ public class time : MonoBehaviour {
     //time変数
     public float timecount;
     public Text timelabel;
+
+    //タイムのゲットメソッド
+    public float GetTime()
+    {
+        return timecount;
+    }
     
 	// Use this for initialization
     void Start () {
         //制限時間
-        timecount = 3;
+        timecount = 5;
 	}
 	
 	// Update is called once per frame
@@ -24,7 +30,7 @@ public class time : MonoBehaviour {
         //timeループ
         if (timecount <= 0.0f)
         {
-            Start();
+            //Start(); 今は邪魔なのでコメントアウト
 
             //ポイント数
             FindObjectOfType<score>().countpoint(100);
