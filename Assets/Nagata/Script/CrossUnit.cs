@@ -26,6 +26,11 @@ public class CrossUnit : MonoBehaviour {
     bool SUAccessflag;//マウスがLtypeUnitの位置に接触している場合。
     bool islotateflag = false;
     Animation SUanim;
+
+    public bool GetIslotate()
+    {
+        return islotateflag;
+    }
     // Use this for initialization
     public void FlagSwitch1()
     {

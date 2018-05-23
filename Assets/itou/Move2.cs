@@ -25,6 +25,7 @@ public class Move2 : MonoBehaviour {
             //壁に当たったら
             if (hit.collider.tag == "Wall")
             {
+                Debug.Log(1);
                 flag = true;               //衝突した
                 hitCoumt++;                //カウンターをカウント
                 distance = distance * 2;   //Rayの飛ばせる距離
