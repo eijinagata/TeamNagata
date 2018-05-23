@@ -9,6 +9,7 @@ public class Move2 : MonoBehaviour {
     float distance;         //Rayの飛ばせる距離
     float speed = 0.05f;    //このオブジェクトのスピード
     bool flag = false;      //このオブジェクトが壁に当たったかどうか
+    bool crossFlag;
     CrossUnit crossUnit;
 
     void RayMove()
@@ -26,7 +27,7 @@ public class Move2 : MonoBehaviour {
             //壁に当たったら
             if (hit.collider.tag == "Wall")
             {
-                Debug.Log(1);
+                Debug.Log("壁に衝突");
                 flag = true;               //衝突した
                 hitCoumt++;                //カウンターをカウント
                 distance = distance * 2;   //Rayの飛ばせる距離
@@ -66,11 +67,14 @@ public class Move2 : MonoBehaviour {
 	void Update ()
     {
         RayMove();
-
-        bool crossFlag = crossUnit.GetIslotate();
-
+        if (crossUnit != false)
+        {
+            Debug.Log("起動したじぇ");
+            crossFlag = crossUnit.GetIslotate();
+            Debug.Log("crossFlag="+crossFlag);
+        }
         //Rayが壁に衝突するまで動く
-        if (flag == false || crossFlag == false)
+        if (flag == false)
         {
             transform.position += transform.TransformDirection(Vector3.forward) * speed;
         }
