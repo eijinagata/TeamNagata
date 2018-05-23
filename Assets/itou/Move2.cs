@@ -70,7 +70,7 @@ public class Move2 : MonoBehaviour {
         bool crossFlag = crossUnit.GetIslotate();
 
         //Rayが壁に衝突するまで動く
-        if (flag == false && crossFlag == false)
+        if (flag == false || crossFlag == false)
         {
             transform.position += transform.TransformDirection(Vector3.forward) * speed;
         }
