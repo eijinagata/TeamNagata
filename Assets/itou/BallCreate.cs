@@ -34,6 +34,7 @@ public class BallCreate : MonoBehaviour
             ball.transform.position = transform.position;
             ball.transform.forward = transform.forward;
             Instantiate(ball);
+            Debug.Log("発射");
         }
     }
 }
