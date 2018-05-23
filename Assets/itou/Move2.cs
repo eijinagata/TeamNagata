@@ -9,6 +9,7 @@ public class Move2 : MonoBehaviour {
     float distance;         //Rayの飛ばせる距離
     float speed = 0.05f;    //このオブジェクトのスピード
     bool flag = false;      //このオブジェクトが壁に当たったかどうか
+    CrossUnit crossUnit;
 
     void RayMove()
     {
@@ -66,8 +67,10 @@ public class Move2 : MonoBehaviour {
     {
         RayMove();
 
+        bool crossFlag = crossUnit.GetIslotate();
+
         //Rayが壁に衝突するまで動く
-        if (flag == false)
+        if (flag == false && crossFlag == false)
         {
             transform.position += transform.TransformDirection(Vector3.forward) * speed;
         }
@@ -79,6 +82,7 @@ public class Move2 : MonoBehaviour {
         {
             //Debug.Log("どこかのステージに侵入");
             GameObject gameObj = other.gameObject;
+            crossUnit = gameObj.GetComponent<CrossUnit>();
             transform.parent = gameObj.transform; //侵入したステージの子オブジェクトに
         }
 
