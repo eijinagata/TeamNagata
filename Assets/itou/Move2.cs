@@ -80,5 +80,11 @@ public class Move2 : MonoBehaviour {
             GameObject gameObj = other.gameObject;
             transform.parent = gameObj.transform; //侵入したステージの子オブジェクトに
         }
+
+        if (other.gameObject.tag == "Goal")
+        {
+            //Debug.Log("ゴールに到達");
+            Destroy(gameObject);
+        }
     }
 }
