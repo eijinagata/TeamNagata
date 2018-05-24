@@ -18,7 +18,7 @@ public class time : MonoBehaviour {
 	// Use this for initialization
     void Start () {
         //制限時間
-        timecount = 5;
+        timecount = 60;
 	}
 	
 	// Update is called once per frame

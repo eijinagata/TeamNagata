@@ -27,7 +27,7 @@ public class CrossUnit : MonoBehaviour {
     bool islotateflag = false;
     Animation SUanim;
 
-    public bool GetIslotate()
+    public bool GetIslotate()//回転中かどうかわかるフラグのGetインデクサ
     {
         return islotateflag;
     }
@@ -39,26 +39,26 @@ public class CrossUnit : MonoBehaviour {
     IEnumerator Loteteflag1Diley()//左クリックが押された１秒後にloteteflag1がtrueになる処理
     {
 
-        yield return new WaitForSeconds(Unitlotatespeed);  //10秒待つ
+        yield return new WaitForSeconds(Unitlotatespeed);  
 
         loteteflag1 = true;
 
     }
     IEnumerator Loteteflag2Diley()//左クリックが押された１秒後にloteteflag2がtrueになる処理
     {
-        yield return new WaitForSeconds(LtypeUnitLotateScript.Unitlotatespeed);  //10秒待つ
+        yield return new WaitForSeconds(LtypeUnitLotateScript.Unitlotatespeed);  
         loteteflag2 = true;
 
     }
     IEnumerator Loteteflag3Diley()//左クリックが押された１秒後にloteteflag3がtrueになる処理
     {
-        yield return new WaitForSeconds(LtypeUnitLotateScript.Unitlotatespeed);  //10秒待つ
+        yield return new WaitForSeconds(LtypeUnitLotateScript.Unitlotatespeed);  
         loteteflag3 = true;
 
     }
     IEnumerator Loteteflag4Diley()//左クリックが押された１秒後にloteteflag4がtrueになる処理
     {
-        yield return new WaitForSeconds(LtypeUnitLotateScript.Unitlotatespeed);  //10秒待つ
+        yield return new WaitForSeconds(LtypeUnitLotateScript.Unitlotatespeed);  
         loteteflag1 = false;
         loteteflag2 = false;
         loteteflag3 = false;
@@ -236,25 +236,21 @@ public class CrossUnit : MonoBehaviour {
             {
                 flagint = 1;
                 StartCoroutine("Loteteflag1Diley");
-                Debug.Log("1起動");
             }
             if (flagint == 1 && islotateflag == false && loteteflag1 == true && loteteflag2 == false)
             {
                 flagint = 2;
                 StartCoroutine("Loteteflag2Diley");
-                Debug.Log("2起動");
             }
             if (flagint == 2 && islotateflag == false && loteteflag1 == true && loteteflag2 == true && loteteflag3 == false)
             {
                 flagint = 3;
                 StartCoroutine("Loteteflag3Diley");
-                Debug.Log("３起動");
             }
             if (flagint == 3 && islotateflag == false && loteteflag1 == true && loteteflag2 == true && loteteflag3 == true && loteteflag4 == false)
             {
                 flagint = 4;
                 StartCoroutine("Loteteflag4Diley");
-                Debug.Log("4起動");
 
             }
 

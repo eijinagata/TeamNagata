@@ -25,6 +25,10 @@ public class StraightUnitScript : MonoBehaviour {
     bool SUAccessflag;//マウスがStrightUnitの位置に接触している場合。
     bool islotateflag = false;
     Animation SUanim;
+    public bool GetIslotateStright()//回転中かどうかわかるフラグのGetインデクサ
+    {
+        return islotateflag;
+    }
     // Use this for initialization
     public void FlagSwitch1()
     {
