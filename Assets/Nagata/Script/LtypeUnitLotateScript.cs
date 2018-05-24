@@ -27,6 +27,11 @@ public class LtypeUnitLotateScript : MonoBehaviour {
     bool SUAccessflag;//マウスがLtypeUnitの位置に接触している場合。
     bool islotateflag = false;
     Animation SUanim;
+
+    public bool GetIslotatetypeL()//回転中かどうかわかるフラグのGetインデクサ
+    {
+        return islotateflag;
+    }
     // Use this for initialization
     public void FlagSwitch1()
     {
