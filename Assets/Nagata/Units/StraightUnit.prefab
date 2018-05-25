@@ -58,9 +58,9 @@ GameObject:
   - component: {fileID: 33713812495606836}
   - component: {fileID: 65460250192239388}
   - component: {fileID: 23538789093947388}
-  - component: {fileID: 114695645016473208}
   - component: {fileID: 114752891672303064}
   - component: {fileID: 65549676419496102}
+  - component: {fileID: 114834144886529988}
   m_Layer: 0
   m_Name: StraightUnit
   m_TagString: Stage
@@ -280,17 +280,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114695645016473208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746183782191230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e59ce494edd003e42a612639f5571f8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114752891672303064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,8 +296,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114695645016473208}
-          m_MethodName: AccessSU
+        - m_Target: {fileID: 114834144886529988}
+          m_MethodName: Access
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -324,8 +313,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114695645016473208}
-          m_MethodName: EscapeSU
+        - m_Target: {fileID: 114834144886529988}
+          m_MethodName: Escape
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -338,3 +327,15 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114834144886529988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746183782191230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 159e708bb09f8db4fb5fa8a36fc33d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0

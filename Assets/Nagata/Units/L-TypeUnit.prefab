@@ -76,9 +76,9 @@ GameObject:
   - component: {fileID: 33215383652965278}
   - component: {fileID: 65140370520765516}
   - component: {fileID: 23371928830243630}
-  - component: {fileID: 114261239248849294}
   - component: {fileID: 114414836746335928}
   - component: {fileID: 65552739331181140}
+  - component: {fileID: 114761613811824572}
   m_Layer: 0
   m_Name: L-TypeUnit
   m_TagString: Stage
@@ -365,17 +365,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114261239248849294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1667813222199968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1900c61c79e5ff845be2a1857734420c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114414836746335928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -392,8 +381,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114261239248849294}
-          m_MethodName: AccessLU
+        - m_Target: {fileID: 114761613811824572}
+          m_MethodName: Access
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -409,8 +398,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114261239248849294}
-          m_MethodName: EscapeLU
+        - m_Target: {fileID: 114761613811824572}
+          m_MethodName: Escape
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -423,3 +412,15 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114761613811824572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1667813222199968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 159e708bb09f8db4fb5fa8a36fc33d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
