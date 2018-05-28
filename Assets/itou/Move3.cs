@@ -21,6 +21,7 @@ public class Move3 : MonoBehaviour {
         //                  ↓Ray  ↓Rayが当たったオブジェクト ↓距離
         if (Physics.Raycast(ray, out hit, distance))
         {
+            Debug.Log("まん丸お山に彩を");
             if (hit.collider.gameObject.tag == "Wall")
             {
                 moveFlag = true;
@@ -45,9 +46,9 @@ public class Move3 : MonoBehaviour {
             }
             else
             {
-                distance = 1;
+                //distance = 1;
                 countr = 0;
-                moveFlag = false;
+                //moveFlag = false;
             }
         }
         else
@@ -55,9 +56,9 @@ public class Move3 : MonoBehaviour {
             distance = 1;
             countr = 0;
             moveFlag = false;
-            Debug.Log("初期化させています");
         }
 
+        //Rayを可視化　色は緑
         Debug.DrawRay(transform.position, transform.forward * 5, Color.green, 1, true);
     }
 
@@ -70,7 +71,16 @@ public class Move3 : MonoBehaviour {
 	void Update ()
     {
         RayMove();
-        //if(moveFlag==false)
+        if(moveFlag==false)
         transform.position += transform.TransformDirection(Vector3.forward) * speed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Stage")
+        {
+            GameObject gameObj = other.gameObject;
+            transform.parent = gameObj.transform; //侵入したステージの子オブジェクトに
+        }
     }
 }
