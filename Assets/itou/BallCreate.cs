@@ -31,7 +31,7 @@ public class BallCreate : MonoBehaviour
         {
             shootTime += Time.deltaTime;
         }
-        if (shootTime > 1.0f)
+        if (shootTime > 0.5f)
         {
             moveFlag = false;
         }
