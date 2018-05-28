@@ -8,6 +8,7 @@ public class BallCreate : MonoBehaviour
     float shootTime = 0.0f;
     public GameObject ball; //発射するオブジェクトを覚えておくための変数
     time timeScript;
+    bool moveFlag = false;
    
 	// Use this for initialization
 	void Start ()
@@ -26,14 +27,22 @@ public class BallCreate : MonoBehaviour
         //}
 
         time = timeScript.GetTime();
-        shootTime += Time.deltaTime;
+        if (moveFlag == true)
+        {
+            shootTime += Time.deltaTime;
+        }
+        if (shootTime > 1.0f)
+        {
+            moveFlag = false;
+        }
 
-        if (time > 0 && shootTime > 0.5 && Input.GetKeyDown(KeyCode.Space))
+        if (time > 0 && Input.GetKeyDown(KeyCode.Space) && moveFlag == false)
         {
             shootTime = 0.0f;
             ball.transform.position = transform.position;
             ball.transform.forward = transform.forward;
             Instantiate(ball);
+            moveFlag = true;
             //Debug.Log("発射");
         }
     }
