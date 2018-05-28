@@ -44,12 +44,6 @@ public class Move3 : MonoBehaviour {
                         break;
                 }
             }
-            else
-            {
-                //distance = 1;
-                countr = 0;
-                //moveFlag = false;
-            }
         }
         else
         {
