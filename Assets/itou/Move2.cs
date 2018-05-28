@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class Move2 : MonoBehaviour
 {
-
     int hitCoumt = 0;       //何回壁に衝突したか記録しておく
     float rayLength = 1.5f; //Rayの長さ
     float distance;         //Rayの飛ばせる距離
     float speed = 0.05f;    //このオブジェクトのスピード
     bool flag = false;      //このオブジェクトが壁に当たったかどうか
-    bool crossFlag;         //ステージが回ってる？
+    bool uniFlag;           //ステージが回ってる？
     string objName;         //当たったオブジェクトの名前を入れておく
     string cube;            //先頭４文字がCube？
-    CrossUnit crossUnit;
+    UnitLotate uniLot;
+
+    int i = 0;
+
+    public void SetI()
+    {
+        i = 0;
+        Debug.Log("待ち時間リセット");
+    }
 
     void RayMove()
     {
@@ -36,7 +43,7 @@ public class Move2 : MonoBehaviour
                 distance = distance + 2;   //Rayの飛ばせる距離を伸ばす
                 objName = hit.collider.name;                //当たったオブジェクトの名前を保存
                 objName = objName + hitCoumt.ToString();    //識別名をつけてやる
-                cube = objName.Substring(0, 4); //当たったオブジェクトの先頭から４文字はCubeですか？
+                cube = objName.Substring(0, 4);             //当たったオブジェクトの先頭から４文字はCubeですか？
 
                 //1回目は右を、2回目は左を、三回目は行き止まりに入ったことになるので削除
                 switch (hitCoumt)
@@ -68,21 +75,49 @@ public class Move2 : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        distance = rayLength;
+        rayLength = 1.5f;       //Rayの長さを指定
+        distance = rayLength;   //決めた長さで初期化
+        hitCoumt = 0;           //カウンターの中身を初期化
+        speed = 0.05f;          //このオブジェクトのスピードを初期化
+        flag = false;           //このオブジェクトが壁に当たったかどうかのフラグを初期化
+        uniFlag = false;        //ステージが回ってる？のフラグを初期化
+        objName = "";           //当たったオブジェクトの名前を入れておく変数を初期化
+        cube = "";              //先頭４文字がCube？の変数を初期化
     }
 
     // Update is called once per frame
     void Update()
     {
-        RayMove();
-        if (crossUnit != null)
-        {
-            crossFlag = crossUnit.GetIslotate();
-        }
+        //RayMove();
+        //if (uniLot != null)
+        //{
+        //    uniFlag = uniLot.GetAccessflag();
+        //}
+
         //Rayが壁に衝突するまで動く
-        if (flag == false || crossUnit == false)
+        if (uniFlag == false)
         {
-            transform.position += transform.TransformDirection(Vector3.forward) * speed;
+            RayMove();
+            if (uniLot != null)
+            {
+                uniFlag = uniLot.GetAccessflag();
+            }
+            if (flag == false)
+            {
+                transform.position += transform.TransformDirection(Vector3.forward) * speed;
+            }
+            Debug.Log("ボールは今動いている");
+        }
+        else if (uniFlag == true)
+        {
+            i++;
+        }
+
+        if (i > 60)
+        {
+            uniFlag = false;
+            i = 0;
+            Debug.Log("一時停止していたボールが再起動");
         }
     }
 
@@ -92,7 +127,7 @@ public class Move2 : MonoBehaviour
         {
             //Debug.LogError("どこかのステージに侵入");
             GameObject gameObj = other.gameObject;
-            crossUnit = gameObj.GetComponent<CrossUnit>();
+            uniLot = gameObj.GetComponent<UnitLotate>();
             transform.parent = gameObj.transform; //侵入したステージの子オブジェクトに
         }
 
