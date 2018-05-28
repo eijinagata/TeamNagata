@@ -6,7 +6,7 @@ public class Move3 : MonoBehaviour {
 
     int countr;
     float distance = 1.0f;
-    float speed = 0.05f;
+    float speed = 0.1f;
     bool moveFlag = false;
 
     void RayMove()
@@ -21,7 +21,7 @@ public class Move3 : MonoBehaviour {
         //                  ↓Ray  ↓Rayが当たったオブジェクト ↓距離
         if (Physics.Raycast(ray, out hit, distance))
         {
-            Debug.Log("まん丸お山に彩を");
+            //Debug.Log("まん丸お山に彩を");
             if (hit.collider.gameObject.tag == "Wall")
             {
                 moveFlag = true;
