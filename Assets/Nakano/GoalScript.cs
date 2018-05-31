@@ -6,50 +6,73 @@ public class GoalScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        int rdmz = UnityEngine.Random.Range(0, 4);
-        //Debug.Log(rdmz);
-        Vector3 pos = transform.position;
-        int rdmx;
-        rdmx = UnityEngine.Random.Range(-1, 3);
-        //Debug.Log(rdmx);
-        if(rdmx==-1)
+        //int rdmz = UnityEngine.Random.Range(0, 3);
+
+         Vector3 pos = transform.position;
+
+        int rdmx = UnityEngine.Random.Range(-2, 1);
+
+        pos.z = 30;
+        pos.x = rdmx;
+
+        transform.position = pos;
+
+       /*  初期位置は上の為コメントアウト
+        * if(rdmx==-3)
         {
-            pos.x = rdmx;
-            pos.z = rdmz;
+            pos.x = rdmx * 10;
+            pos.z = rdmz * 10;
             transform.position = pos;
         }
         else
         {
-            pos.z = 3;
-            pos.x = rdmx;
+            pos.z = 30;
+            pos.x = rdmx * 10;
             transform.position = pos;
         }
+        */
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        float root = transform.localEulerAngles.y;
+        //オブジェクトの向きを取得
+
+
+        if (Input.GetKeyDown(KeyCode.Space))//スペースでオブジェクトの位置変更
         {
             Vector3 pos = transform.position;
 
-            int rdmz = UnityEngine.Random.Range(0, 4);
-            //float oldnumberZ = rdmz;
+            int rdmz = UnityEngine.Random.Range(0, 3);
 
-            int rdmx = UnityEngine.Random.Range(-1, 3);
-            //float oldnumberX = rdmx;
+            int rdmx = UnityEngine.Random.Range(-3, 1);
 
-            if (rdmx == -1)
+            if (rdmx == -3)
             {
-                pos.x = rdmx;
-                pos.z = rdmz;
+                pos.x = rdmx * 10;
+                pos.z = rdmz * 10;
+
                 transform.position = pos;
+
+                if(root==0)
+                {
+                    //向きが0の時90度回転
+                    transform.Rotate(0, 90, 0);
+                }
             }
             else
             {
-                pos.z = 3;
-                pos.x = rdmx;
+                pos.z = 30;
+                pos.x = rdmx * 10;
+
                 transform.position = pos;
+
+                if(root==90)
+                {
+                    //向きが90の時0に戻す
+                    transform.Rotate(0, -90, 0);
+                }
             }
         }
 	}
