@@ -5,7 +5,7 @@ using UnityEngine;
 public class Move3 : MonoBehaviour {
 
     int countr;
-    float distance = 1.0f;
+    float distance = 0.5f;
     float speed = 0.1f;
     bool moveFlag = true;
     bool flag = false;
@@ -41,6 +41,7 @@ public class Move3 : MonoBehaviour {
                     case 1:
                         transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
                         countr++;
+                        Debug.LogError("１８０度回転してます");
                         break;
                     case 2:
                         Destroy(gameObject);
