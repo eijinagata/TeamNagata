@@ -12,7 +12,7 @@ public class time : MonoBehaviour {
 	// Use this for initialization
     void Start () {
         //制限時間
-        timecount = 3;
+        timecount = 60;
 	}
 	
 	// Update is called once per frame
@@ -21,13 +21,13 @@ public class time : MonoBehaviour {
         timelabel.text = string.Format("Time:{0:00}",timecount);
         //time減少
         timecount -= Time.deltaTime;
-        //timeループ
+        //time0になった時
         if (timecount <= 0.0f)
         {
-            Start();
+            timecount = 0;
 
             //ポイント数
-            FindObjectOfType<score>().countpoint(100);
+            //FindObjectOfType<score>().countpoint(100);
         }
     }
 }
