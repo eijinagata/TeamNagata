@@ -13,7 +13,7 @@ public class UnitLotate : MonoBehaviour {
     float degStart = 0f;//Lerp回転の開始地点。
     float degEnd = 90f;//Lerp回転の終了地点。
     float RotlLimit = 90f;//一回のメソッドの実行でこの角度まで回るという角度限界
-    public float LoteSpeed;
+    public float LoteSpeed;//回転スピードを設定できる変数。
 
     bool startRot;//今このユニットが回転中かどうかのフラグ
     public bool GetAccessflag()//今回転中かのフラグのゲットアクセサ
@@ -33,7 +33,7 @@ public class UnitLotate : MonoBehaviour {
         {
             time += Time.deltaTime;//timeにdeltaTimeを加算
             kakudo = Mathf.Lerp(degStart, degEnd, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
-            transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//
+            transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
             if (kakudo >= RotlLimit)
             {
                 startRot = false;
@@ -59,6 +59,7 @@ public class UnitLotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        RotateCom();
+        RotateCom();//メソッド、RotateComを実行。
+        Debug.Log(Accessflag);
     }
 }
