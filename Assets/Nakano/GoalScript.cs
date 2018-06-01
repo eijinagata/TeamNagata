@@ -40,7 +40,7 @@ public class GoalScript : MonoBehaviour {
         //オブジェクトの向きを取得
 
 
-        if (Input.GetKeyDown(KeyCode.Space))//スペースでオブジェクトの位置変更
+        if (Input.GetKeyDown(KeyCode.B))//スペースでオブジェクトの位置変更
         {
             Vector3 pos = transform.position;
 
