@@ -83,8 +83,7 @@ public class Move3 : MonoBehaviour {
             RayMove();
             //Rayが何にもぶつかってなかったら
             if (moveFlag == true)
-            {
-                
+            {               
                 //RayMove();
                 transform.position += transform.TransformDirection(Vector3.forward) * speed;
             }
