@@ -5,14 +5,21 @@ using UnityEngine;
 public class Move3 : MonoBehaviour {
 
     int countr;
-    float distance = 0.5f;
+    float distance = 1.0f;
     float speed = 0.1f;
     bool moveFlag = true;
     bool flag = false;
+    bool nextFlag = false;
     GameObject gameObj;
     UnitLotate uniLot;
+    UnitLotate nextUniLot;
 
     int i = 0;
+
+    public void PlusSpeed(float value)
+    {
+        speed = speed + value;
+    }
 
     void RayMove()
     {
@@ -41,7 +48,7 @@ public class Move3 : MonoBehaviour {
                     case 1:
                         transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
                         countr++;
-                        Debug.LogError("１８０度回転してます");
+                        //Debug.LogError("１８０度回転してます");
                         break;
                     case 2:
                         Destroy(gameObject);
@@ -99,6 +106,8 @@ public class Move3 : MonoBehaviour {
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
             {
+                Debug.LogError("でねーじゃなーか紅玉よぉぉぉ！！");
+                
                 //当たったオブジェクトを代入
                 gameObj = other.gameObject; 
 
