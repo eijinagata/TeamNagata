@@ -116,5 +116,11 @@ public class Move3 : MonoBehaviour {
                 transform.parent = gameObj.transform; 
             }
         }
+
+        if (other.gameObject.tag == "Goal")
+        {
+            Debug.Log("ゴールしたお(^p^)");
+            Destroy(gameObject);
+        }
     }
 }
