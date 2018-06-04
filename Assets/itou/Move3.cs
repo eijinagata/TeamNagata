@@ -7,7 +7,19 @@ public class Move3 : MonoBehaviour {
     int countr;
     float distance = 1.0f;
     float speed = 0.1f;
-    bool moveFlag = false;
+    bool moveFlag = true;
+    bool flag = false;
+    bool nextFlag = false;
+    GameObject gameObj;
+    UnitLotate uniLot;
+    UnitLotate nextUniLot;
+
+    int i = 0;
+
+    public void PlusSpeed(float value)
+    {
+        speed = speed + value;
+    }
 
     void RayMove()
     {
@@ -24,7 +36,7 @@ public class Move3 : MonoBehaviour {
             //Debug.Log("まん丸お山に彩を");
             if (hit.collider.gameObject.tag == "Wall")
             {
-                moveFlag = true;
+                moveFlag = false;
                 Debug.Log("壁に当たった");
                 switch(countr)
                 {
@@ -36,6 +48,7 @@ public class Move3 : MonoBehaviour {
                     case 1:
                         transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
                         countr++;
+                        //Debug.LogError("１８０度回転してます");
                         break;
                     case 2:
                         Destroy(gameObject);
@@ -47,9 +60,9 @@ public class Move3 : MonoBehaviour {
         }
         else
         {
-            distance = 1;
-            countr = 0;
-            moveFlag = false;
+            distance = 1;       //Rayの長さを元に戻す
+            countr = 0;         //カウンターをリセット
+            moveFlag = true;    //起動開始
         }
 
         //Rayを可視化　色は緑
@@ -64,17 +77,50 @@ public class Move3 : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        RayMove();
-        if(moveFlag==false)
-        transform.position += transform.TransformDirection(Vector3.forward) * speed;
+        //ステージに衝突したら
+        if (gameObj != null)
+        {
+            //回ってる？回ってない？確認フラグを代入
+            flag = uniLot.GetAccessflag();
+        }
+        //Debug.Log(flag);
+        
+        //モジュールが回ってなくて
+        if (flag == false)
+        {
+            RayMove();
+            //Rayが何にもぶつかってなかったら
+            if (moveFlag == true)
+            {               
+                //RayMove();
+                transform.position += transform.TransformDirection(Vector3.forward) * speed;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Stage")
+        //モジュールが回ってなくて
+        if (flag == false)
         {
-            GameObject gameObj = other.gameObject;
-            transform.parent = gameObj.transform; //侵入したステージの子オブジェクトに
+            //タグがStageのオブジェクトに衝突したら
+            if (other.gameObject.tag == "Stage")
+            {
+                //当たったオブジェクトを代入
+                gameObj = other.gameObject; 
+
+                //当たったオブジェクトについているUnitLotateを取得
+                uniLot = gameObj.GetComponent<UnitLotate>();
+
+                //侵入したステージの子オブジェクトに
+                transform.parent = gameObj.transform; 
+            }
+        }
+
+        if (other.gameObject.tag == "Goal")
+        {
+            Debug.Log("ゴールしたお(^p^)");
+            Destroy(gameObject);
         }
     }
 }
