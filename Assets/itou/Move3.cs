@@ -12,10 +12,7 @@ public class Move3 : MonoBehaviour {
     bool nextFlag = false;
     GameObject gameObj;
     UnitLotate uniLot;
-    UnitLotate nextUniLot;
-
-    int i = 0;
-
+  
     public void PlusSpeed(float value)
     {
         speed = speed + value;
