@@ -14,6 +14,7 @@ public class UnitLotate : MonoBehaviour {
     float degEnd = 90f;//Lerp回転の終了地点。
     float RotlLimit = 90f;//一回のメソッドの実行でこの角度まで回るという角度限界
     public float LoteSpeed;//回転スピードを設定できる変数。
+    float Rot = 90.0f;
 
     bool startRot;//今このユニットが回転中かどうかのフラグ
     public bool GetAccessflag()//今回転中かのフラグのゲットアクセサ
@@ -23,18 +24,19 @@ public class UnitLotate : MonoBehaviour {
 
     public void RotateCom()
     {
-        if (Input.GetMouseButtonDown(0) && !startRot&&Accessflag==true)
+        if (Input.GetMouseButtonDown(0) /* && !startRot*/&&Accessflag==true)
         {
-            startRot = true;
-
+            //startRot = true;
+            transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
+            Rot += 90;
         }
 
-        if (startRot)
+       /* if (startRot)
         {
-            time += Time.deltaTime;//timeにdeltaTimeを加算
-            kakudo = Mathf.Lerp(degStart, degEnd, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
-            transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
-            if (kakudo >= RotlLimit)
+           /* time += Time.deltaTime;//timeにdeltaTimeを加算
+            kakudo = Mathf.Lerp(degStart, degEnd, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。*/
+           // transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
+            /*if (kakudo >= RotlLimit)
             {
                 startRot = false;
                 time = 0;
@@ -42,7 +44,7 @@ public class UnitLotate : MonoBehaviour {
                 degEnd += 90;
                 RotlLimit += 90;
             }
-        }
+        }*/
     }
     private void Access()//マウスが一本道のコライダーに入った時
     {
