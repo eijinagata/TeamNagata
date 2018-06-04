@@ -106,8 +106,6 @@ public class Move3 : MonoBehaviour {
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
             {
-                Debug.LogError("でねーじゃなーか紅玉よぉぉぉ！！");
-                
                 //当たったオブジェクトを代入
                 gameObj = other.gameObject; 
 
