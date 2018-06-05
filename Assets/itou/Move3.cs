@@ -9,10 +9,11 @@ public class Move3 : MonoBehaviour {
     float speed = 0.1f;
     bool moveFlag = true;
     bool flag = false;
-    bool nextFlag = false;
+    //bool nextFlag = false;
     GameObject gameObj;
     UnitLotate uniLot;
   
+    //スピードを上げたい時に使うアクセサ
     public void PlusSpeed(float value)
     {
         speed = speed + value;
@@ -34,7 +35,7 @@ public class Move3 : MonoBehaviour {
             if (hit.collider.gameObject.tag == "Wall")
             {
                 moveFlag = false;
-                Debug.Log("壁に当たった");
+                //Debug.Log("壁に当たった");
                 switch(countr)
                 {
                     case 0:
@@ -63,7 +64,7 @@ public class Move3 : MonoBehaviour {
         }
 
         //Rayを可視化　色は緑
-        Debug.DrawRay(transform.position, transform.forward * 5, Color.green, 1, true);
+        //Debug.DrawRay(transform.position, transform.forward * 5, Color.green, 1, true);
     }
 
     // Use this for initialization
