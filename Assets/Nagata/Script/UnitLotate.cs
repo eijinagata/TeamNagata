@@ -15,11 +15,12 @@ public class UnitLotate : MonoBehaviour {
     float RotlLimit = 90f;//一回のメソッドの実行でこの角度まで回るという角度限界
     public float LoteSpeed;//回転スピードを設定できる変数。
     float Rot = 90.0f;
-
+    public ParticleSystem particle;//パーティクルを格納するための器
     bool startRot;//今このユニットが回転中かどうかのフラグ
     public bool GetAccessflag()//今回転中かのフラグのゲットアクセサ
     {
         return startRot;
+        particle = this.GetComponent<ParticleSystem>();
     }
 
     public void RotateCom()
@@ -27,6 +28,7 @@ public class UnitLotate : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) /* && !startRot*/&&Accessflag==true)
         {
             //startRot = true;
+            particle.Play();
             transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
             Rot += 90;
         }
