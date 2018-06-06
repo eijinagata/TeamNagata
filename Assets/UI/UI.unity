@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timecount: 0
   timelabel: {fileID: 471269809}
+  gameobject: {fileID: 2081960141}
 --- !u!114 &471269809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,7 +488,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scorelabel: {fileID: 2081960144}
-  Time: {fileID: 471269806}
 --- !u!114 &2081960144
 MonoBehaviour:
   m_ObjectHideFlags: 0
