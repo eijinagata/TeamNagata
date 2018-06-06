@@ -5,8 +5,10 @@ using UnityEngine;
 public class Move3 : MonoBehaviour {
 
     int countr;
+    int fps = 0;
     float distance = 1.0f;
     float speed = 0.1f;
+    bool frameFlag = false;
     bool moveFlag = true;
     bool flag = false;
     //bool nextFlag = false;
@@ -15,7 +17,7 @@ public class Move3 : MonoBehaviour {
   
     //スピードを上げたい時に使うアクセサ
     public void PlusSpeed(float value)
-    {
+    { 
         speed = speed + value;
     }
 
@@ -68,9 +70,10 @@ public class Move3 : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -92,6 +95,17 @@ public class Move3 : MonoBehaviour {
             {               
                 //RayMove();
                 transform.position += transform.TransformDirection(Vector3.forward) * speed;
+            }
+        }
+
+        //縁取りに衝突したらフレームを計る
+        if (frameFlag == true)
+        {
+            fps++;
+            //300フレーム動いたらこのオブジェクトを消す
+            if (fps == 300)
+            {
+                Destroy(gameObject);
             }
         }
     }
@@ -117,8 +131,18 @@ public class Move3 : MonoBehaviour {
 
         if (other.gameObject.tag == "Goal")
         {
-            Debug.Log("ゴールしたお(^p^)");
+            //Debug.Log("ゴールした");
             Destroy(gameObject);
+        }
+
+        //外の縁取りに当たったら
+        if (other.gameObject.tag == "DestroyObj")
+        {
+            //親離れする
+            transform.parent = null;
+
+            //フレームをカウント開始
+            frameFlag = true;
         }
     }
 }
