@@ -14,7 +14,7 @@ public class Lerp : MonoBehaviour
     float degStart = 0f;
     float degEnd = 90f;
 
-    bool startRot = false;
+    bool prtstartRot = false;
 
 
     // Use this for initialization
@@ -38,19 +38,19 @@ public class Lerp : MonoBehaviour
         }
         */
 
-        if (Input.GetMouseButtonDown(0)&&!startRot)
+        if (Input.GetMouseButtonDown(0)&&!prtstartRot)
         {
-            startRot = true;
+            prtstartRot = true;
         }
 
-        if (startRot)
+        if (prtstartRot)
         {
             time += Time.deltaTime;
             kakudo = Mathf.Lerp(degStart, degEnd, time * 0.1f);
             transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);
             if (kakudo>=90)
             {
-                startRot = false;
+                prtstartRot = false;
                 time = 0;
                 degStart += 90;
                 degEnd += 89;
