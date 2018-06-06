@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Goal
   - Ball
+  - DestroyObj
   layers:
   - Default
   - TransparentFX
