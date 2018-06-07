@@ -129,11 +129,11 @@ public class Move3 : MonoBehaviour {
             }
         }
 
-        if (other.gameObject.tag == "Goal")
-        {
-            //Debug.Log("ゴールした");
-            Destroy(gameObject);
-        }
+        //if (other.gameObject.tag == "Goal")
+        //{
+        //    //Debug.Log("ゴールした");
+        //    Destroy(gameObject);
+        //}
 
         //外の縁取りに当たったら
         if (other.gameObject.tag == "DestroyObj")
