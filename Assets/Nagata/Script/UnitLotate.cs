@@ -8,8 +8,6 @@ public class UnitLotate : MonoBehaviour {
     bool Accessflag = false;//このユニットにマウスが当たっているかどうかのフラグ。
     Quaternion a = Quaternion.AngleAxis(0, Vector3.up);
     Quaternion b = Quaternion.AngleAxis(90, Vector3.up);
-    public GameObject Speedplus;
-    Move3 move3;
     float kakudo = 0f;//今の角度
     float degStart = 0f;//Lerp回転の開始地点。
     float degEnd = 90f;//Lerp回転の終了地点。
@@ -59,8 +57,6 @@ public class UnitLotate : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        move3 = Speedplus.GetComponent<Move3>();
-        move3.PlusSpeed(0.3f);
 	}
 	
 	// Update is called once per frame
