@@ -606,6 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
+  Speedplus: {fileID: 1564451317369778, guid: 31cf657e6f11ac8418a76e8d974f73bf, type: 2}
   LoteSpeed: 6
   particle: {fileID: 198005110056284464}
 --- !u!198 &198005110056284464

@@ -8,13 +8,12 @@ public class UnitLotate : MonoBehaviour {
     bool Accessflag = false;//このユニットにマウスが当たっているかどうかのフラグ。
     Quaternion a = Quaternion.AngleAxis(0, Vector3.up);
     Quaternion b = Quaternion.AngleAxis(90, Vector3.up);
-
     float kakudo = 0f;//今の角度
     float degStart = 0f;//Lerp回転の開始地点。
     float degEnd = 90f;//Lerp回転の終了地点。
     float RotlLimit = 90f;//一回のメソッドの実行でこの角度まで回るという角度限界
     public float LoteSpeed;//回転スピードを設定できる変数。
-    float Rot = 90.0f;
+    float Rot = 90.0f;//一度に回転する角度。
     public ParticleSystem particle;//パーティクルを格納するための器
     bool startRot;//今このユニットが回転中かどうかのフラグ
     public bool GetAccessflag()//今回転中かのフラグのゲットアクセサ
@@ -58,7 +57,6 @@ public class UnitLotate : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-		
 	}
 	
 	// Update is called once per frame
