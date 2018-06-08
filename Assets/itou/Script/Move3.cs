@@ -14,6 +14,15 @@ public class Move3 : MonoBehaviour {
     //bool nextFlag = false;
     GameObject gameObj;
     UnitLotate uniLot;
+
+    //int[,] stage =
+    //{
+    //    {  0, 0, 1, 0, 0, },
+    //    {  0, 0, 1, 0, 0, },
+    //    {  1, 1, 1, 1, 1, },
+    //    {  0, 0, 1, 0, 0, },
+    //    {  0, 0, 1, 0, 0, },
+    //};
   
     //スピードを上げたい時に使うアクセサ
     public void PlusSpeed(float value)
