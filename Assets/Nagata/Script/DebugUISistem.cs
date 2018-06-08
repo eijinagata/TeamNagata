@@ -11,9 +11,11 @@ public class DebugUISistem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
        
+        heatlevel = unit.GetComponent<UnitLotate>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        HeatLevelText.text = string.Format("Heat:{0:0000}", heatlevel.GetHeatLevel());
     }
 }
