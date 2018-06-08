@@ -36,7 +36,7 @@ public class BallCreate : MonoBehaviour
             moveFlag = false;
         }
 
-        if (time > 0 && Input.GetKeyDown(KeyCode.Space) && moveFlag == false)
+        if (time > 0 /*&& Input.GetKeyDown(KeyCode.Space)*/ && moveFlag == false)
         {
             shootTime = 0.0f;
             ball.transform.position = transform.position;
