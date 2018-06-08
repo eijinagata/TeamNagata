@@ -15,6 +15,10 @@ public class time : MonoBehaviour {
         timecount = 60;
         
 	}
+    public float GetTimecount()
+    {
+        return timecount;
+    }
 	
 	// Update is called once per frame
 	void Update () {
