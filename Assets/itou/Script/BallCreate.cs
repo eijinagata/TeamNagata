@@ -26,7 +26,7 @@ public class BallCreate : MonoBehaviour
         //    Instantiate(ball);
         //}
 
-        time = timeScript.GetTime();
+        time = timeScript.GetTimecount();
         if (moveFlag == true)
         {
             shootTime += Time.deltaTime;
