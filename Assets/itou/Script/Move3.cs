@@ -2,27 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move3 : MonoBehaviour {
-
-    int countr;
-    int fps = 0;
-    float distance = 1.0f;
-    float speed = 0.1f;
-    bool frameFlag = false;
-    bool moveFlag = true;
-    bool flag = false;
-    //bool nextFlag = false;
-    GameObject gameObj;
-    UnitLotate uniLot;
-
-    //int[,] stage =
-    //{
-    //    {  0, 0, 1, 0, 0, },
-    //    {  0, 0, 1, 0, 0, },
-    //    {  1, 1, 1, 1, 1, },
-    //    {  0, 0, 1, 0, 0, },
-    //    {  0, 0, 1, 0, 0, },
-    //};
+public class Move3 : MonoBehaviour
+{
+    int countr;             //何回壁に当たったかを記録する変数
+    int fps = 0;            //何フレーム経ったかを覚えておく変数
+    float distance = 1.0f;  //Rayの長さ
+    float speed = 0.1f;     //移動速度
+    bool frameFlag = false; //フレームを計っていいかダメかを判断するフラグ
+    bool moveFlag = true;   //動いていいかダメかを判断するフラグ
+    bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ
+    GameObject gameObj;     //当たったオブジェクトを覚えておく変数
+    UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
 
     public void PlusSpeed(float value)
     {
@@ -72,9 +62,6 @@ public class Move3 : MonoBehaviour {
             countr = 0;         //カウンターをリセット
             moveFlag = true;    //起動開始
         }
-
-        //Rayを可視化　色は緑
-        //Debug.DrawRay(transform.position, transform.forward * 5, Color.green, 1, true);
     }
 
     // Use this for initialization
@@ -90,14 +77,14 @@ public class Move3 : MonoBehaviour {
         if (gameObj != null)
         {
             //回ってる？回ってない？確認フラグを代入
-            flag = uniLot.GetAccessflag();
+            unitFlag = uniLot.GetAccessflag();
         }
-        //Debug.Log(flag);
         
         //モジュールが回ってなくて
-        if (flag == false)
+        if (unitFlag == false)
         {
             RayMove();
+
             //Rayが何にもぶつかってなかったら
             if (moveFlag == true)
             {               
@@ -110,6 +97,7 @@ public class Move3 : MonoBehaviour {
         if (frameFlag == true)
         {
             fps++;
+
             //300フレーム動いたらこのオブジェクトを消す
             if (fps == 300)
             {
@@ -121,7 +109,7 @@ public class Move3 : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         //モジュールが回ってなくて
-        if (flag == false)
+        if (unitFlag == false)
         {
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
@@ -136,12 +124,6 @@ public class Move3 : MonoBehaviour {
                 transform.parent = gameObj.transform; 
             }
         }
-
-        //if (other.gameObject.tag == "Goal")
-        //{
-        //    //Debug.Log("ゴールした");
-        //    Destroy(gameObject);
-        //}
 
         //外の縁取りに当たったら
         if (other.gameObject.tag == "DestroyObj")

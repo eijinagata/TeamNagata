@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    int countr;
-    int hitCountr;
-    static int date = 0;
-    float distance = 1.0f;
-    float speed = 0.1f;
-    bool frameFlag = false;
-    bool moveFlag = true;
-    bool flag = false;
-    GameObject gameObj;
-    UnitLotate uniLot;
-    public GameObject my;
+    int countr;             //何回壁に当たったかを記録する変数
+    int hitCountr;          //何回ボールに当たったかを記録する変数
+    static int date = 0;    //今ゲーム内に何体敵がいるかを記録する変数
+    float distance = 1.5f;  //Rayの長さ
+    float speed = 0.1f;     //移動速度
+    bool moveFlag = true;   //動いていいかダメかを判断するフラグ
+    bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ
+    GameObject gameObj;     //当たったオブジェクトを覚えておく変数
+    UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
+    public GameObject my;   //自分を覚えるための変数
 
+    //変数名dateにアクセスしたいときに使う
     public int DATE
     {
         get { return date; }
@@ -42,6 +42,7 @@ public class EnemyMove : MonoBehaviour
             if (hit.collider.gameObject.tag == "Wall")
             {
                 moveFlag = false;
+
                 switch (countr)
                 {
                     case 0:
@@ -52,7 +53,6 @@ public class EnemyMove : MonoBehaviour
                     case 1:
                         transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
                         countr++;
-                        //Debug.LogError("１８０度回転してます");
                         break;
                     case 2:
                         transform.Rotate(new Vector3(0.0f, 270.0f, 0.0f));
@@ -83,13 +83,14 @@ public class EnemyMove : MonoBehaviour
         if (gameObj != null)
         {
             //回ってる？回ってない？確認フラグを代入
-            flag = uniLot.GetAccessflag();
+            unitFlag = uniLot.GetAccessflag();
         }
       
         //モジュールが回ってなくて
-        if (flag == false)
+        if (unitFlag == false)
         {
             RayMove();
+
             //Rayが何にもぶつかってなかったら
             if (moveFlag == true)
             {
@@ -98,6 +99,7 @@ public class EnemyMove : MonoBehaviour
             }
         }
 
+        //十回ボールに当たったら分身を生成
         if (hitCountr == 10)
         {
             moveFlag = false;
@@ -106,18 +108,12 @@ public class EnemyMove : MonoBehaviour
             moveFlag = true;
             hitCountr = 0;
         }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            date--;
-            Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //モジュールが回ってなくて
-        if (flag == false)
+        if (unitFlag == false)
         {
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
@@ -133,10 +129,10 @@ public class EnemyMove : MonoBehaviour
             }
         }
 
+        //ボールにぶつかったら
         if (other.gameObject.tag == "Ball")
         {
             hitCountr++;
-            //hp--;
             Destroy(other.gameObject);
         }
     }
