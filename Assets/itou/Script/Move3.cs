@@ -23,10 +23,9 @@ public class Move3 : MonoBehaviour {
     //    {  0, 0, 1, 0, 0, },
     //    {  0, 0, 1, 0, 0, },
     //};
-  
-    //スピードを上げたい時に使うアクセサ
+
     public void PlusSpeed(float value)
-    { 
+    {
         speed = speed + value;
     }
 
