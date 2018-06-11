@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour {
-
+public class EnemyMove : MonoBehaviour
+{
     int countr;
     int hitCountr;
-    int hp = 3;
+    static int date = 0;
     float distance = 1.0f;
     float speed = 0.1f;
     bool frameFlag = false;
@@ -15,6 +15,12 @@ public class EnemyMove : MonoBehaviour {
     GameObject gameObj;
     UnitLotate uniLot;
     public GameObject my;
+
+    public int DATE
+    {
+        get { return date; }
+        set { date = value; }
+    }
 
     void RayMove()
     {
@@ -67,7 +73,7 @@ public class EnemyMove : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        
+        date++;
     }
 
     // Update is called once per frame
@@ -92,12 +98,6 @@ public class EnemyMove : MonoBehaviour {
             }
         }
 
-        //HPが0以下になったら削除
-        if (hp <= 0)
-        {
-            Destroy(gameObject);
-        }
-
         if (hitCountr == 10)
         {
             moveFlag = false;
@@ -105,6 +105,12 @@ public class EnemyMove : MonoBehaviour {
             Instantiate(my, transform.position, Quaternion.identity);
             moveFlag = true;
             hitCountr = 0;
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            date--;
+            Destroy(gameObject);
         }
     }
 
