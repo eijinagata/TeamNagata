@@ -24,5 +24,11 @@ public class GoalMove : MonoBehaviour {
             //Debug.LogError("頂点へ狂い咲け");
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+            Debug.Log("三段付き");
+        }
     }
 }
