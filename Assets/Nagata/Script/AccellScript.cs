@@ -13,7 +13,6 @@ public class AccellScript : MonoBehaviour {
             AccellSphia = gameobj.GetComponent<Move3>();
             
             AccellSphia.PlusSpeed(0.3f);
-            Debug.Log("起動！！");
         }
     }
     // Use this for initialization

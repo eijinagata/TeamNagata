@@ -73,7 +73,6 @@ public class UnitLotate : MonoBehaviour {
         {
             OverHeatflag = true;
             isCoolDoun = true;
-            Debug.Log("大変だ！　オーバーヒートしたぞ！");
         }
     }
 
@@ -123,9 +122,7 @@ public class UnitLotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(HeatLevel);
         OverHeat();//OverHeatを実行。
         RotateCom();//メソッド、RotateComを実行。
-        Debug.Log(Accessflag);
     }
 }
