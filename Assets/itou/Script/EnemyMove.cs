@@ -79,8 +79,7 @@ public class EnemyMove : MonoBehaviour {
             //回ってる？回ってない？確認フラグを代入
             flag = uniLot.GetAccessflag();
         }
-        //Debug.Log(flag);
-
+      
         //モジュールが回ってなくて
         if (flag == false)
         {
@@ -104,7 +103,6 @@ public class EnemyMove : MonoBehaviour {
             moveFlag = false;
             my.transform.parent = null;
             Instantiate(my, transform.position, Quaternion.identity);
-            my.transform.parent = null;
             moveFlag = true;
             hitCountr = 0;
         }
