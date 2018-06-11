@@ -27,8 +27,10 @@ public class GoalMove : MonoBehaviour {
 
         if (other.gameObject.tag == "Enemy")
         {
+            GameObject hitObj = other.gameObject;
+            EnemyMove enemyMove = hitObj.GetComponent<EnemyMove>();
+            enemyMove.DATE--;
             Destroy(other.gameObject);
-            Debug.Log("三段付き");
         }
     }
 }
