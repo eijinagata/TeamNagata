@@ -8,6 +8,12 @@ public class UnitLotate : MonoBehaviour {
     /// <summary>
     /// フィールドここから！
     /// </summary>
+    /// 
+
+    Renderer rend;//アタッチされたユニットのレンダラーを取得。
+    float red, green, blue, alpha;  //RGBα用の変数
+
+
     public float time;//時間をはかる変数。
 
     bool Accessflag = false;//このユニットにマウスが当たっているかどうかのフラグ。
@@ -35,7 +41,7 @@ public class UnitLotate : MonoBehaviour {
 
     bool OverHeatflag = false;//オーバーヒートしているかどうかのフラグ
 
-    float HeatLevel = 0;//今どれだけオーバーヒートに近づいているかの数値
+    float HeatLevel = 1;//今どれだけオーバーヒートに近づいているかの数値
 
     bool isCoolDoun = false;//今クールタイムに入っているかどうかのフラグ
     /// <summary>
@@ -57,23 +63,31 @@ public class UnitLotate : MonoBehaviour {
     public void OverHeat()//オーバーヒートさせる処理
     {
 
-        if (HeatLevel >= 0.0f)//HeatLevelが0になるまで常時タイム分だけマイナスする。
+        if (HeatLevel <= 1.0f)//HeatLevelが0になるまで常時タイム分だけプラスする。
         {
-           HeatLevel -= Time.deltaTime;
+           HeatLevel += Time.deltaTime*0.2f;
         }
 
-        if (HeatLevel <= 0.0f)//HeatLevelの値が0になった場合、OverHeatflagはfalseになる。
+        if (HeatLevel >= 1.0f)//HeatLevelの値が0になった場合、OverHeatflagはfalseになる。
         {
             OverHeatflag = false;
             isCoolDoun = false;
-            HeatLevel = 0;
+            HeatLevel = 1.0f;
         }
 
-        if (HeatLevel >= 5.0f&&OverHeatflag==false)//HeatLevelが５以上になった場合、オーバーヒートして冷えるまでユニットが停止する。
+        if (HeatLevel <= 0.0f&&OverHeatflag==false)//HeatLevelが５以上になった場合、オーバーヒートして冷えるまでユニットが停止する。
         {
             OverHeatflag = true;
             isCoolDoun = true;
         }
+    }
+
+    public void HeatRender()
+    {
+        blue = HeatLevel;
+        green = HeatLevel;
+        rend.material.color = new Color(red, green, blue, alpha);
+
     }
 
     public void RotateCom()//ユニットを押すたびに90度回転させる処理。
@@ -83,13 +97,15 @@ public class UnitLotate : MonoBehaviour {
             //startRot = true;
             if (isCoolDoun == false)//オーバーヒートするまでHeatLevelに1を加算
             {
-                HeatLevel+=1;
+                HeatLevel-=0.2f;
             }
             particle.Play();//パーティクル発動！！
             transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
            
             Rot += 90;
         }
+
+    
 
 
        /* if (startRot)
@@ -118,11 +134,20 @@ public class UnitLotate : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-	}
+        //色をいじるためにRendererを取得
+        rend = GetComponent<Renderer>();
+
+        //今の色で初期化
+        red = rend.material.color.r;
+        green = rend.material.color.g;
+        blue = rend.material.color.b;
+        alpha = rend.material.color.a;
+    }
 	
 	// Update is called once per frame
 	void Update () {
         OverHeat();//OverHeatを実行。
         RotateCom();//メソッド、RotateComを実行。
+        HeatRender();
     }
 }
