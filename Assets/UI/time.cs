@@ -8,7 +8,6 @@ public class time : MonoBehaviour {
     //time変数
     public float timecount;
     public Text timelabel;
-    public GameObject gameobject;
 	// Use this for initialization
     public void Start () {
         //制限時間
@@ -30,7 +29,7 @@ public class time : MonoBehaviour {
         }
         else
         {
-            //ポイント数
+            //AddScore呼出し
             FindObjectOfType<score>().AddScore(1);
         }
     }

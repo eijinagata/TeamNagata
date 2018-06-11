@@ -32,7 +32,7 @@ public class score : MonoBehaviour {
         float com=(1.0f+((1.0f+combo)/10.0f))-0.1f;
         //ポイント値*コンボ倍率
         scorecount += SCORE_POINT * com;
-        //Debug.Log(scorecount);
+        Debug.Log(scorecount);
     }
 
 }
