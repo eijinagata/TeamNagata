@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour {
 
     int countr;
+    int hitCountr;
     int hp = 3;
     float distance = 1.0f;
     float speed = 0.1f;
@@ -13,6 +14,7 @@ public class EnemyMove : MonoBehaviour {
     bool flag = false;
     GameObject gameObj;
     UnitLotate uniLot;
+    public GameObject my;
 
     void RayMove()
     {
@@ -65,7 +67,7 @@ public class EnemyMove : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -96,6 +98,16 @@ public class EnemyMove : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        if (hitCountr == 10)
+        {
+            moveFlag = false;
+            my.transform.parent = null;
+            Instantiate(my, transform.position, Quaternion.identity);
+            my.transform.parent = null;
+            moveFlag = true;
+            hitCountr = 0;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -119,7 +131,8 @@ public class EnemyMove : MonoBehaviour {
 
         if (other.gameObject.tag == "Ball")
         {
-            hp--;
+            hitCountr++;
+            //hp--;
             Destroy(other.gameObject);
         }
     }
