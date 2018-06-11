@@ -19,30 +19,21 @@ public class BallCreate : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Return))
-        //{
-        //    ball.transform.position = transform.position;
-        //    ball.transform.forward = transform.forward;
-        //    Instantiate(ball);
-        //}
-
         time = timeScript.GetTimecount();
-        if (moveFlag == true)
-        {
+        
             shootTime += Time.deltaTime;
-        }
+        
         if (shootTime > 0.5f)
         {
             moveFlag = false;
         }
 
-        if (time > 0 /*&& Input.GetKeyDown(KeyCode.Space)*/ && moveFlag == false)
+        if (time > 0 /*&& Input.GetKeyDown(KeyCode.Space)*/ && shootTime > 0.5f/*moveFlag == false*/)
         {
             shootTime = 0.0f;
             ball.transform.position = transform.position;
             ball.transform.forward = transform.forward;
             Instantiate(ball);
-            moveFlag = true;
             //Debug.Log("発射");
         }
     }
