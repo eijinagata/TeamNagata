@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoalScript : MonoBehaviour {
+public class GoalScript : MonoBehaviour
+{
+    
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +31,7 @@ public class GoalScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             Vector3 pos = transform.position;
 
