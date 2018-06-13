@@ -99,8 +99,14 @@ public class EnemyMove : MonoBehaviour
             }
         }
 
+        if (date >= 3)
+        {
+            Debug.LogError("起動マン");
+            hitCountr = 0;
+        }
+
         //十回ボールに当たったら分身を生成
-        if (hitCountr == 10)
+        if (hitCountr == 10 && date < 3)
         {
             moveFlag = false;
             my.transform.parent = null;
