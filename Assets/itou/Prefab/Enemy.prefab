@@ -123,4 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d4a4bab48aea344a4cd7e304d48d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxEnemy: 1
   my: {fileID: 1722623976246854}
