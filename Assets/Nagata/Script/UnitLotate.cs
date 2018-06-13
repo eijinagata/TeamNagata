@@ -35,7 +35,9 @@ public class UnitLotate : MonoBehaviour {
 
     float Rot = 90.0f;//一度に回転する角度。
 
-    public ParticleSystem particle;//パーティクルを格納するための器
+    public ParticleSystem LoteParticle;//回転時発動パーティクルを格納するための器
+
+    public ParticleSystem OverHeatSmog;//オーバーヒート時の煙
 
     bool startRot;//今このユニットが回転中かどうかのフラグ
 
@@ -62,7 +64,7 @@ public class UnitLotate : MonoBehaviour {
 
     public void OverHeat()//オーバーヒートさせる処理
     {
-
+        
         if (HeatLevel <= 1.0f)//HeatLevelが0になるまで常時タイム分だけプラスする。
         {
            HeatLevel += Time.deltaTime*0.2f;
@@ -79,6 +81,14 @@ public class UnitLotate : MonoBehaviour {
         {
             OverHeatflag = true;
             isCoolDoun = true;
+        }
+        if (isCoolDoun == false)
+        {
+
+        }
+        if (isCoolDoun == true)
+        {
+
         }
     }
 
@@ -99,7 +109,7 @@ public class UnitLotate : MonoBehaviour {
             {
                 HeatLevel-=0.2f;
             }
-            particle.Play();//パーティクル発動！！
+            LoteParticle.Play();//パーティクル発動！！
             transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
            
             Rot += 90;
