@@ -133,6 +133,8 @@ public class Move3 : MonoBehaviour
 
             //フレームをカウント開始
             frameFlag = true;
+
+            moveFlag = false;
         }
     }
 }
