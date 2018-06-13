@@ -101,7 +101,6 @@ public class EnemyMove : MonoBehaviour
 
         if (date >= 3)
         {
-            Debug.LogError("起動マン");
             hitCountr = 0;
         }
 
