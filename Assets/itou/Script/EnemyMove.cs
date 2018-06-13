@@ -6,6 +6,7 @@ public class EnemyMove : MonoBehaviour
 {
     int countr;             //何回壁に当たったかを記録する変数
     int hitCountr;          //何回ボールに当たったかを記録する変数
+    public int maxEnemy;    //フィールドに存在できるエネミーの上限
     static int date = 0;    //今ゲーム内に何体敵がいるかを記録する変数
     float distance = 1.5f;  //Rayの長さ
     float speed = 0.1f;     //移動速度
@@ -99,13 +100,13 @@ public class EnemyMove : MonoBehaviour
             }
         }
 
-        if (date >= 3)
+        if (date >= maxEnemy)
         {
             hitCountr = 0;
         }
 
         //十回ボールに当たったら分身を生成
-        if (hitCountr == 10 && date < 3)
+        if (hitCountr == 10 && date < maxEnemy)
         {
             moveFlag = false;
             my.transform.parent = null;
