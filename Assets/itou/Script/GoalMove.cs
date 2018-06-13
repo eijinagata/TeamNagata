@@ -5,11 +5,13 @@ using UnityEngine;
 public class GoalMove : MonoBehaviour {
 
     int score;
+    int penalty;
 
 	// Use this for initialization
 	void Start ()
     {
-        score = 100;    //仮のスコア	
+        score = 100;    //仮のスコア
+        penalty = 500;  //仮のペナルティ	
 	}
 	
 	// Update is called once per frame
@@ -21,7 +23,6 @@ public class GoalMove : MonoBehaviour {
     {
         if (other.gameObject.tag == "Ball")
         {
-            //Debug.LogError("頂点へ狂い咲け");
             Destroy(other.gameObject);
         }
 
