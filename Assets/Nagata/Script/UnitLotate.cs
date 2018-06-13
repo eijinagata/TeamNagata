@@ -88,7 +88,7 @@ public class UnitLotate : MonoBehaviour {
         }
         if (isCoolDoun == true)
         {
-
+            OverHeatSmog.Play();
         }
     }
 

@@ -129,8 +129,6 @@ GameObject:
   - component: {fileID: 4162072054687772}
   - component: {fileID: 198380188958545468}
   - component: {fileID: 199662969431671772}
-  - component: {fileID: 114694926039841632}
-  - component: {fileID: 114210054893270472}
   m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
@@ -158,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667813222199968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.3, y: 0, z: 0}
+  m_LocalPosition: {x: 25.448503, y: 62.50344, z: -29.843739}
   m_LocalScale: {x: 10, y: 0.1, z: 10}
   m_Children:
   - {fileID: 4646840180463666}
@@ -495,18 +493,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114210054893270472
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1834621811417294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039587c051912eb4ead9e58344c5f3ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 1
 --- !u!114 &114414836746335928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -554,19 +540,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!114 &114694926039841632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1834621811417294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDuration: 8
-  maxDuration: 10
 --- !u!114 &114761613811824572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -582,7 +555,7 @@ MonoBehaviour:
   HeatLeveltext: {fileID: 0}
   LoteSpeed: 6
   LoteParticle: {fileID: 198433908982056680}
-  OverHeatSmog: {fileID: 0}
+  OverHeatSmog: {fileID: 198380188958545468}
 --- !u!198 &198380188958545468
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -590,7 +563,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834621811417294}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -643,7 +616,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 0
+  randomSeed: 2118444321
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -679,7 +652,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2

@@ -111,8 +111,6 @@ GameObject:
   - component: {fileID: 4403528978580746}
   - component: {fileID: 198148140164775776}
   - component: {fileID: 199420517117456246}
-  - component: {fileID: 114155802858503408}
-  - component: {fileID: 114282131165018700}
   m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
@@ -193,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1746183782191230}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -3.3, y: 0, z: 0}
+  m_LocalPosition: {x: 23.267448, y: 62.775085, z: -31.00404}
   m_LocalScale: {x: 10, y: 0.1, z: 10}
   m_Children:
   - {fileID: 4835265131932332}
@@ -410,31 +408,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114155802858503408
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1945568269178976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDuration: 8
-  maxDuration: 10
---- !u!114 &114282131165018700
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1945568269178976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039587c051912eb4ead9e58344c5f3ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 1
 --- !u!114 &114752891672303064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,7 +470,7 @@ MonoBehaviour:
   HeatLeveltext: {fileID: 0}
   LoteSpeed: 6
   LoteParticle: {fileID: 198387166033278302}
-  OverHeatSmog: {fileID: 0}
+  OverHeatSmog: {fileID: 198148140164775776}
 --- !u!198 &198148140164775776
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -505,7 +478,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1945568269178976}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -558,7 +531,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 0
+  randomSeed: 975436276
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -594,7 +567,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
