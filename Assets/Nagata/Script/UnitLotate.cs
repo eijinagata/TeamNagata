@@ -114,24 +114,35 @@ public class UnitLotate : MonoBehaviour {
            
             Rot += 90;
         }
-
-    
-
-
-       /* if (startRot)
+        if (Input.GetMouseButtonDown(1) /* && !startRot*/&& Accessflag == true && OverHeatflag == false)
         {
-           /* time += Time.deltaTime;//timeにdeltaTimeを加算
-            kakudo = Mathf.Lerp(degStart, degEnd, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。*/
-           // transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
-            /*if (kakudo >= RotlLimit)
+            //startRot = true;
+            if (isCoolDoun == false)//オーバーヒートするまでHeatLevelに1を加算
             {
-                startRot = false;
-                time = 0;
-                degStart += 90;
-                degEnd += 90;
-                RotlLimit += 90;
+                HeatLevel -= 0.2f;
             }
-        }*/
+            LoteParticle.Play();//パーティクル発動！！
+            transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
+
+            Rot -= 90;
+        }
+
+
+
+        /* if (startRot)
+         {
+            /* time += Time.deltaTime;//timeにdeltaTimeを加算
+             kakudo = Mathf.Lerp(degStart, degEnd, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。*/
+        // transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
+        /*if (kakudo >= RotlLimit)
+        {
+            startRot = false;
+            time = 0;
+            degStart += 90;
+            degEnd += 90;
+            RotlLimit += 90;
+        }
+    }*/
     }
 
     private void Access()//マウスが一本道のコライダーに入った時
