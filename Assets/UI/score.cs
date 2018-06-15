@@ -7,9 +7,21 @@ public class score : MonoBehaviour {
 
     //スコア変数
     float scorecount;
+    float Threeharf;
     public Text scorelabel;
     //ポイント固定値
     const int SCORE_POINT = 100;
+
+    public float GetScorecount()//スコアのゲットアクセサ
+    {
+        return scorecount;
+    }
+    public void SetEnemyGoalScore(int Enemy)
+    {
+        Threeharf = scorecount;
+        Threeharf /= Enemy;
+        scorecount -= Threeharf;
+    }
     
     void Start()
     {

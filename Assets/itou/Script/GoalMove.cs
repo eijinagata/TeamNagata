@@ -27,14 +27,16 @@ public class GoalMove : MonoBehaviour {
     {
         if (other.gameObject.tag == "Ball")
         {
-            Destroy(other.gameObject);
             Score.AddScore(GetCombo.ComboCount());
             GetCombo.active();
+            Destroy(other.gameObject);
+            
 
         }
 
         if (other.gameObject.tag == "Enemy")
         {
+            Score.SetEnemyGoalScore(3);
             GameObject hitObj = other.gameObject;
             EnemyMove enemyMove = hitObj.GetComponent<EnemyMove>();
             enemyMove.DATE--;
