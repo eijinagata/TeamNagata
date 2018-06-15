@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     int countr;             //何回壁に当たったかを記録する変数
-    int hitCountr;          //何回ボールに当たったかを記録する変数
+    //int hitCountr;          //何回ボールに当たったかを記録する変数
     public int maxEnemy;    //フィールドに存在できるエネミーの上限
     static int date = 0;    //今ゲーム内に何体敵がいるかを記録する変数
     float distance = 1.5f;  //Rayの長さ
@@ -100,20 +100,20 @@ public class EnemyMove : MonoBehaviour
             }
         }
 
-        if (date >= maxEnemy)
-        {
-            hitCountr = 0;
-        }
+        //if (date >= maxEnemy)
+        //{
+        //    hitCountr = 0;
+        //}
 
-        //十回ボールに当たったら分身を生成
-        if (hitCountr == 10 && date < maxEnemy)
-        {
-            moveFlag = false;
-            my.transform.parent = null;
-            Instantiate(my, transform.position, Quaternion.identity);
-            moveFlag = true;
-            hitCountr = 0;
-        }
+        ////十回ボールに当たったら分身を生成
+        //if (hitCountr == 10 && date < maxEnemy)
+        //{
+        //    moveFlag = false;
+        //    my.transform.parent = null;
+        //    Instantiate(my, transform.position, Quaternion.identity);
+        //    moveFlag = true;
+        //    hitCountr = 0;
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -138,7 +138,7 @@ public class EnemyMove : MonoBehaviour
         //ボールにぶつかったら
         if (other.gameObject.tag == "Ball")
         {
-            hitCountr++;
+            //hitCountr++;
             Destroy(other.gameObject);
         }
     }
