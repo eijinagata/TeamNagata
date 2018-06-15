@@ -18,7 +18,7 @@ public class EnemySpawnObjectController : MonoBehaviour
 	void Update ()
     {
         //フィールドから敵がいなくなったら１体スポーン
-        if (enemyMove.DATE <= 0)
+        if (enemyMove.DATE <= 1)
         {
             enemy.transform.position = transform.position;
             enemy.transform.forward = transform.forward;
