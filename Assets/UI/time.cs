@@ -8,7 +8,7 @@ public class time : MonoBehaviour {
     //time変数
     public float timecount;
     public Text timelabel;
-    public GameObject gameobject;
+   // public GameObject gameobject;
 
     //大切だから消さないで　タイムを取得する時に使う
     public float GetTime()

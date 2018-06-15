@@ -7,6 +7,7 @@ public class GoalMove : MonoBehaviour {
     int score;
     int penalty;
     score Score;
+    combo GetCombo;
     public GameObject ScoreCount;//スコアカウントが入る変数。
 
 	// Use this for initialization
@@ -19,6 +20,7 @@ public class GoalMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Score = ScoreCount.GetComponent<score>();
+        GetCombo = ScoreCount.GetComponent<combo>();
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +28,8 @@ public class GoalMove : MonoBehaviour {
         if (other.gameObject.tag == "Ball")
         {
             Destroy(other.gameObject);
-            Score.AddScore(combo);
+            Score.AddScore(GetCombo.ComboCount());
+            GetCombo.active();
 
         }
 
