@@ -6,14 +6,13 @@ public class combo : MonoBehaviour {
 
 
     GameObject limit;
-    GameObject combotext;
+    public  Text combotext;
     int count = 0;
 //   public int combopoint = 100;//コンボ加算点数
     float time;
 	// Use this for initialization
 	void Start () {
-        limit = GameObject.Find("Timelimit");
-        combotext = GameObject.Find("Combo");
+        //combotext = GameObject.Find("Combo");
     }
 	
 	// Update is called once per frame
@@ -24,7 +23,6 @@ public class combo : MonoBehaviour {
             count = 0;
         }
 
-        limit.GetComponent<Text>().text=time.ToString();
         combotext.GetComponent<Text>().text = count.ToString();
     }
 
@@ -34,7 +32,7 @@ public class combo : MonoBehaviour {
     }
 
 
-   public int ComboCount() //
+   public int ComboCount() 
     {
         time = 0;
         count += 1;
