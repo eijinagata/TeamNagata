@@ -9,6 +9,7 @@ TagManager:
   - Goal
   - Ball
   - DestroyObj
+  - Enemy
   layers:
   - Default
   - TransparentFX

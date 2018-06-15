@@ -127,10 +127,10 @@ GameObject:
   - component: {fileID: 33767469843258478}
   - component: {fileID: 65499790310699644}
   - component: {fileID: 23142194893124084}
-  - component: {fileID: 114556730879849206}
   - component: {fileID: 65145457479471396}
-  - component: {fileID: 114590388297905762}
   - component: {fileID: 114303511272009652}
+  - component: {fileID: 114352961946246950}
+  - component: {fileID: 114849054235488696}
   m_Layer: 0
   m_Name: EnchantAccel-C
   m_TagString: Stage
@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1979241767429626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.14478, y: 0, z: 25.622538}
+  m_LocalPosition: {x: -9.912498, y: 18.137943, z: 9.250483}
   m_LocalScale: {x: 10, y: 0.1, z: 10}
   m_Children:
   - {fileID: 4701949449293356}
@@ -559,7 +559,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e793f3bf58cb71240800ba54609dc645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114556730879849206
+--- !u!114 &114352961946246950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1979241767429626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 159e708bb09f8db4fb5fa8a36fc33d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  HeatLeveltext: {fileID: 0}
+  LoteSpeed: 6
+  LoteParticle: {fileID: 0}
+  OverHeatSmog: {fileID: 0}
+--- !u!114 &114849054235488696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -575,7 +591,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114590388297905762}
+        - m_Target: {fileID: 114352961946246950}
           m_MethodName: Access
           m_Mode: 1
           m_Arguments:
@@ -592,7 +608,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114590388297905762}
+        - m_Target: {fileID: 114352961946246950}
           m_MethodName: Escape
           m_Mode: 1
           m_Arguments:
@@ -606,20 +622,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!114 &114590388297905762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1979241767429626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 159e708bb09f8db4fb5fa8a36fc33d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 0
-  LoteSpeed: 6
-  particle: {fileID: 198390550475123150}
 --- !u!198 &198390550475123150
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -42,7 +42,7 @@ public class time : MonoBehaviour {
         else
         {
             //ポイント数
-            FindObjectOfType<score>().AddScore(1);
+           // FindObjectOfType<score>().AddScore(1);
         }
     }
 }
