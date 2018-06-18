@@ -79,9 +79,9 @@ public class Move3 : MonoBehaviour
             //回ってる？回ってない？確認フラグを代入
             unitFlag = uniLot.GetAccessflag();
         }
-        
+
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (/*unitFlag == false*/uniLot.LOTATE==false)
         {
             RayMove();
 
@@ -109,16 +109,16 @@ public class Move3 : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (/*unitFlag == false*/uniLot.LOTATE == false)
         {
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
             {
                 //当たったオブジェクトを代入
-                gameObj = other.gameObject; 
+                gameObj = other.gameObject;
 
-                ////当たったオブジェクトについているUnitLotateを取得
-                //uniLot = gameObj.GetComponent<UnitLotate>();
+                //当たったオブジェクトについているUnitLotateを取得
+                uniLot = gameObj.GetComponent<UnitLotate>();
 
                 //侵入したステージの子オブジェクトに
                 transform.parent = gameObj.transform; 
