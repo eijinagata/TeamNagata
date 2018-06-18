@@ -45,6 +45,8 @@ public class UnitLotate : MonoBehaviour {
 
     float HeatLevel = 1;//今どれだけオーバーヒートに近づいているかの数値
 
+    bool LeftTurnFlag = false;//左回りになるかどうかのフラグ。
+
     bool isCoolDoun = false;//今クールタイムに入っているかどうかのフラグ
     /// <summary>
     /// フィールドここまで！！
@@ -113,31 +115,51 @@ public class UnitLotate : MonoBehaviour {
             transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
            
         }
-        if (Input.GetMouseButtonDown(1) /* && !startRot*/&& Accessflag == true && OverHeatflag == false)
+        if (Input.GetMouseButtonDown(1)  && !startRot&& Accessflag == true && OverHeatflag == false&&LeftTurnFlag==false)
         {
             startRot = true;
+            LeftTurnFlag = true;
             if (isCoolDoun == false)//オーバーヒートするまでHeatLevelに1を加算
             {
                 HeatLevel -= 0.2f;
             }
+            degEnd -= 90;
+            degStart -= 90;
+            RotlLimit -= 90;
             LoteParticle.Play();//パーティクル発動！！
             transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
 
         }
-         if (startRot)
-         {
-             time += Time.deltaTime;//timeにdeltaTimeを加算
-             kakudo = Mathf.Lerp(degStart, degEnd, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
-             transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
-        if (kakudo >= RotlLimit)
-        {
-            startRot = false;
-            time = 0;
-            degStart += 90;
-            degEnd += 90;
-            RotlLimit += 90;
+        if (startRot&&LeftTurnFlag)
+            {
+                time += Time.deltaTime;//timeにdeltaTimeを加算
+                kakudo = Mathf.Lerp(degEnd, degStart, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
+                transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
+                if (kakudo <= RotlLimit)
+                {
+                    startRot = false;
+                    LeftTurnFlag = false;
+                    time = 0;
+                    /*degStart -= 90;
+                    degEnd -= 90;
+                    RotlLimit -= 90;*/
+                }
         }
-    }
+        if (startRot)
+        {
+            time += Time.deltaTime;//timeにdeltaTimeを加算
+            kakudo = Mathf.Lerp(degStart, degEnd, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
+            transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
+            if (kakudo >= RotlLimit)
+            {
+                startRot = false;
+                time = 0;
+                degStart += 90;
+                degEnd += 90;
+                RotlLimit += 90;
+            }
+          
+        }
     }
 
     private void Access()//マウスが一本道のコライダーに入った時
