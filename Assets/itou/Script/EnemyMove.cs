@@ -16,6 +16,13 @@ public class EnemyMove : MonoBehaviour
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
     public GameObject my;   //自分を覚えるための変数
 
+    // Use this for initialization
+    void Start()
+    {
+        date++;
+        uniLot = FindObjectOfType<UnitLotate>();
+    }
+
     //変数名dateにアクセスしたいときに使う
     public int DATE
     {
@@ -35,7 +42,7 @@ public class EnemyMove : MonoBehaviour
         //                  ↓Ray  ↓Rayが当たったオブジェクト ↓距離
         if (Physics.Raycast(ray, out hit, distance))
         {
-            if(hit.collider.gameObject.tag == "DestroyObj")
+            if (hit.collider.gameObject.tag == "DestroyObj")
             {
                 transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
             }
@@ -71,11 +78,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    void Start()
-    {
-        date++;
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -84,11 +87,12 @@ public class EnemyMove : MonoBehaviour
         if (gameObj != null)
         {
             //回ってる？回ってない？確認フラグを代入
-            unitFlag = uniLot.GetAccessflag();
+            //unitFlag = uniLot.GetAccessflag();
+            uniLot = FindObjectOfType<UnitLotate>();
         }
-      
+        uniLot = FindObjectOfType<UnitLotate>();
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (uniLot.LOTATE == false)
         {
             RayMove();
 
@@ -119,21 +123,21 @@ public class EnemyMove : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        //if (/*unitFlag == false*/uniLot.LOTATE == false)
+        //{
+        //タグがStageのオブジェクトに衝突したら
+        if (other.gameObject.tag == "Stage")
         {
-            //タグがStageのオブジェクトに衝突したら
-            if (other.gameObject.tag == "Stage")
-            {
-                //当たったオブジェクトを代入
-                gameObj = other.gameObject;
+            //当たったオブジェクトを代入
+            gameObj = other.gameObject;
 
-                //当たったオブジェクトについているUnitLotateを取得
-                uniLot = gameObj.GetComponent<UnitLotate>();
+            ////当たったオブジェクトについているUnitLotateを取得
+            //uniLot = gameObj.GetComponent<UnitLotate>();
 
-                //侵入したステージの子オブジェクトに
-                transform.parent = gameObj.transform;
-            }
+            //侵入したステージの子オブジェクトに
+            transform.parent = gameObj.transform;
         }
+        //}
 
         //ボールにぶつかったら
         if (other.gameObject.tag == "Ball")
