@@ -9,26 +9,31 @@ public class BallCreate : MonoBehaviour
     public GameObject ball; //発射するオブジェクトを覚えておくための変数
     time timeScript;
     bool moveFlag = false;
+    UnitLotate uniLot;
    
 	// Use this for initialization
 	void Start ()
     {
         timeScript = FindObjectOfType<time>();
+        //uniLot = FindObjectOfType<UnitLotate>();
     }
 	
 	// Update is called once per frame
 	void Update()
     {
         time = timeScript.GetTimecount();
-        
+        uniLot = FindObjectOfType<UnitLotate>();
+        if (uniLot.LOTATE == false)
+        {
             shootTime += Time.deltaTime;
-        
+        }
+
         if (shootTime > 0.5f)
         {
             moveFlag = false;
         }
 
-        if (time > 0 /*&& Input.GetKeyDown(KeyCode.Space)*/ && shootTime > 0.5f/*moveFlag == false*/)
+        if (time > 0 /*&& Input.GetKeyDown(KeyCode.Space)*/ && shootTime > 0.5f)
         {
             shootTime = 0.0f;
             ball.transform.position = transform.position;
