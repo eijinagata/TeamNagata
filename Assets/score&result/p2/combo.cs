@@ -7,7 +7,7 @@ public class combo : MonoBehaviour {
 
     GameObject limit;
     public  Text combotext;
-    int count = 0;
+    public int count = 0;
 //   public int combopoint = 100;//コンボ加算点数
     float time;
 	// Use this for initialization
@@ -31,7 +31,10 @@ public class combo : MonoBehaviour {
         ComboCount();
     }
 
-
+   public int GetCombocount()
+    {
+        return count;
+    }
    public int ComboCount() 
     {
         time = 0;
