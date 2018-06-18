@@ -9,7 +9,7 @@ public class Move3 : MonoBehaviour
     float distance = 1.0f;  //Rayの長さ
     float speed = 0.1f;     //移動速度
     bool frameFlag = false; //フレームを計っていいかダメかを判断するフラグ
-    bool moveFlag = true;   //動いていいかダメかを判断するフラグ
+    static bool moveFlag = true;   //動いていいかダメかを判断するフラグ
     bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ
     GameObject gameObj;     //当たったオブジェクトを覚えておく変数
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
@@ -74,7 +74,7 @@ public class Move3 : MonoBehaviour
 	void Update ()
     {
         //ステージに衝突したら
-        if (gameObj != null)
+        if (uniLot != null)
         {
             //回ってる？回ってない？確認フラグを代入
             unitFlag = uniLot.GetAccessflag();
@@ -114,14 +114,20 @@ public class Move3 : MonoBehaviour
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
             {
-                //当たったオブジェクトを代入
-                gameObj = other.gameObject; 
+                //親離れする
+                transform.parent = null;
 
-                ////当たったオブジェクトについているUnitLotateを取得
-                //uniLot = gameObj.GetComponent<UnitLotate>();
+                transform.parent = other.gameObject.transform;
 
-                //侵入したステージの子オブジェクトに
-                transform.parent = gameObj.transform; 
+                uniLot = other.gameObject.GetComponent<UnitLotate>();
+                ////当たったオブジェクトを代入
+                //gameObj = other.gameObject; 
+
+                //////当たったオブジェクトについているUnitLotateを取得
+                ////uniLot = gameObj.GetComponent<UnitLotate>();
+
+                ////侵入したステージの子オブジェクトに
+                //transform.parent = gameObj.transform; 
             }
         }
 
