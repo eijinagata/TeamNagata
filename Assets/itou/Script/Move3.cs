@@ -9,7 +9,7 @@ public class Move3 : MonoBehaviour
     float distance = 1.0f;  //Rayの長さ
     float speed = 0.1f;     //移動速度
     bool frameFlag = false; //フレームを計っていいかダメかを判断するフラグ
-    static bool moveFlag = true;   //動いていいかダメかを判断するフラグ
+    bool moveFlag = true;   //動いていいかダメかを判断するフラグ
     bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ
     GameObject gameObj;     //当たったオブジェクトを覚えておく変数
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
