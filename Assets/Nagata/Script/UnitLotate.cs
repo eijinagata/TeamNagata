@@ -47,6 +47,8 @@ public class UnitLotate : MonoBehaviour {
 
     bool LeftTurnFlag = false;//左回りになるかどうかのフラグ。
 
+    bool RightTurnFlag = true;//右周りになるかどうかのフラグ
+
     bool isCoolDoun = false;//今クールタイムに入っているかどうかのフラグ
     /// <summary>
     /// フィールドここまで！！
@@ -104,33 +106,34 @@ public class UnitLotate : MonoBehaviour {
 
     public void RotateCom()//ユニットを押すたびに90度回転させる処理。
     {
-        if (Input.GetMouseButtonDown(0)  && !startRot&& Accessflag == true && OverHeatflag == false)
+        if (Input.GetMouseButtonDown(0) /* && !startRot*/&& Accessflag == true && OverHeatflag == false && RightTurnFlag == true /*&& LeftTurnFlag == false*/)
         {
-            startRot = true;
+           // startRot = true;
             if (isCoolDoun == false)//オーバーヒートするまでHeatLevelに1を加算
             {
                 HeatLevel-=0.2f;
             }
+            
             LoteParticle.Play();//パーティクル発動！！
+            Rot += 90;
             transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
-           
+
         }
-        if (Input.GetMouseButtonDown(1)  && !startRot&& Accessflag == true && OverHeatflag == false&&LeftTurnFlag==false)
+        if (Input.GetMouseButtonDown(1) /* && !startRot*/&& Accessflag == true && OverHeatflag == false&&LeftTurnFlag==true/*&&RightTurnFlag==true*/)
         {
-            startRot = true;
-            LeftTurnFlag = true;
+           // startRot = true;
+            //LeftTurnFlag = true;
             if (isCoolDoun == false)//オーバーヒートするまでHeatLevelに1を加算
             {
                 HeatLevel -= 0.2f;
             }
-            degEnd -= 90;
-            degStart -= 90;
-            RotlLimit -= 90;
+
+            Rot = -90;
             LoteParticle.Play();//パーティクル発動！！
             transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
 
         }
-        if (startRot&&LeftTurnFlag)
+       /* if (startRot&&LeftTurnFlag)
             {
                 time += Time.deltaTime;//timeにdeltaTimeを加算
                 kakudo = Mathf.Lerp(degEnd, degStart, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
@@ -142,7 +145,7 @@ public class UnitLotate : MonoBehaviour {
                     time = 0;
                     /*degStart -= 90;
                     degEnd -= 90;
-                    RotlLimit -= 90;*/
+                    RotlLimit -= 90;
                 }
         }
         if (startRot)
@@ -160,6 +163,19 @@ public class UnitLotate : MonoBehaviour {
             }
           
         }
+        */
+    
+    }
+
+    public void RightTurn()//右にターンする用のメソッド
+    {
+        RightTurnFlag = true;
+        LeftTurnFlag = false;
+    }
+    public void LeftTurn()//左にターンする用のメソッド
+    {
+        RightTurnFlag = false;
+        LeftTurnFlag = true;
     }
 
     private void Access()//マウスが一本道のコライダーに入った時
