@@ -67,7 +67,7 @@ public class Move3 : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        
+        uniLot = FindObjectOfType<UnitLotate>();
     }
 	
 	// Update is called once per frame
@@ -117,8 +117,8 @@ public class Move3 : MonoBehaviour
                 //当たったオブジェクトを代入
                 gameObj = other.gameObject; 
 
-                //当たったオブジェクトについているUnitLotateを取得
-                uniLot = gameObj.GetComponent<UnitLotate>();
+                ////当たったオブジェクトについているUnitLotateを取得
+                //uniLot = gameObj.GetComponent<UnitLotate>();
 
                 //侵入したステージの子オブジェクトに
                 transform.parent = gameObj.transform; 
