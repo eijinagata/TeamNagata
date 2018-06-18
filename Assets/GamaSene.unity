@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combotext: {fileID: 1199340726}
-  count: 0
+  count: 10
 --- !u!4 &298595211 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4751736927741226, guid: 1070e3882d38ed2468dba293851045f7,

@@ -28,9 +28,10 @@ public class WingOpenScript : MonoBehaviour {
 
         if (Combo.GetCombocount() >= 10)
         {
-            WingAnim.SetInteger("Seekint", 1);
             Timecount += Time.deltaTime;
-            if (Timecount >= 1.2f)
+            WingAnim.SetInteger("Seekint", 1);
+           
+            if (Timecount >= 1.6f)
             {
                 Particles[0].Play();
                 Particles[1].Play();
