@@ -6,7 +6,7 @@ public class Move3 : MonoBehaviour
 {
     int countr;             //何回壁に当たったかを記録する変数
     int fps = 0;            //何フレーム経ったかを覚えておく変数
-    float distance = 1.0f;  //Rayの長さ
+    float distance = 1.5f;  //Rayの長さ
     float speed = 0.1f;     //移動速度
     bool frameFlag = false; //フレームを計っていいかダメかを判断するフラグ
     bool moveFlag = true;   //動いていいかダメかを判断するフラグ
@@ -74,14 +74,14 @@ public class Move3 : MonoBehaviour
 	void Update ()
     {
         //ステージに衝突したら
-        if (uniLot != null)
-        {
-            //回ってる？回ってない？確認フラグを代入
-            unitFlag = uniLot.GetAccessflag();
-        }
+        //if (uniLot != null)
+        //{
+        //    //回ってる？回ってない？確認フラグを代入
+        //    unitFlag = uniLot.GetAccessflag();
+        //}
         
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (uniLot.LOTATE==false&&frameFlag==false)
         {
             RayMove();
 
@@ -109,7 +109,7 @@ public class Move3 : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (uniLot.LOTATE == false)
         {
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
@@ -140,7 +140,7 @@ public class Move3 : MonoBehaviour
             //フレームをカウント開始
             frameFlag = true;
 
-            moveFlag = false;
+            speed = 0.01f;
         }
     }
 }
