@@ -30,7 +30,7 @@ public class time : MonoBehaviour {
         else
         {
             //AddScore呼出し
-            FindObjectOfType<score>().AddScore(1);
+            //FindObjectOfType<score>().AddScore(1);
         }
     }
 }
