@@ -8,7 +8,7 @@ public class EnemyMove : MonoBehaviour
     //int hitCountr;          //何回ボールに当たったかを記録する変数
     public int maxEnemy;    //フィールドに存在できるエネミーの上限
     static int date = 0;    //今ゲーム内に何体敵がいるかを記録する変数
-    float distance = 1.5f;  //Rayの長さ
+    float distance = 1.0f;  //Rayの長さ
     float speed = 0.1f;     //移動速度
     bool moveFlag = true;   //動いていいかダメかを判断するフラグ
     bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ

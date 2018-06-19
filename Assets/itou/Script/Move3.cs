@@ -6,7 +6,7 @@ public class Move3 : MonoBehaviour
 {
     int countr;             //何回壁に当たったかを記録する変数
     int fps = 0;            //何フレーム経ったかを覚えておく変数
-    float distance = 1.5f;  //Rayの長さ
+    float distance = 1.0f;  //Rayの長さ
     float speed = 0.1f;     //移動速度
     bool frameFlag = false; //フレームを計っていいかダメかを判断するフラグ
     bool moveFlag = true;   //動いていいかダメかを判断するフラグ
@@ -31,11 +31,10 @@ public class Move3 : MonoBehaviour
         //                  ↓Ray  ↓Rayが当たったオブジェクト ↓距離
         if (Physics.Raycast(ray, out hit, distance))
         {
-            //Debug.Log("まん丸お山に彩を");
             if (hit.collider.gameObject.tag == "Wall")
             {
                 moveFlag = false;
-                //Debug.Log("壁に当たった");
+                
                 switch(countr)
                 {
                     case 0:
@@ -46,7 +45,6 @@ public class Move3 : MonoBehaviour
                     case 1:
                         transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
                         countr++;
-                        //Debug.LogError("１８０度回転してます");
                         break;
                     case 2:
                         Destroy(gameObject);
