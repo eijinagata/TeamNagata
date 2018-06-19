@@ -16,13 +16,6 @@ public class EnemyMove : MonoBehaviour
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
     public GameObject my;   //自分を覚えるための変数
 
-    // Use this for initialization
-    void Start()
-    {
-        date++;
-        uniLot = FindObjectOfType<UnitLotate>();
-    }
-
     //変数名dateにアクセスしたいときに使う
     public int DATE
     {
@@ -78,19 +71,24 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-
+    // Use this for initialization
+    void Start()
+    {
+        date++;
+        uniLot = FindObjectOfType<UnitLotate>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         //ステージに衝突したら
-        if (gameObj != null)
-        {
-            //回ってる？回ってない？確認フラグを代入
-            //unitFlag = uniLot.GetAccessflag();
-            uniLot = FindObjectOfType<UnitLotate>();
-        }
-        uniLot = FindObjectOfType<UnitLotate>();
+        //if (gameObj != null)
+        //{
+        //    //回ってる？回ってない？確認フラグを代入
+        //    //unitFlag = uniLot.GetAccessflag();
+        //    uniLot = FindObjectOfType<UnitLotate>();
+        //}
+        
         //モジュールが回ってなくて
         if (uniLot.LOTATE == false)
         {
@@ -122,22 +120,32 @@ public class EnemyMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //モジュールが回ってなくて
-        //if (/*unitFlag == false*/uniLot.LOTATE == false)
-        //{
-        //タグがStageのオブジェクトに衝突したら
         if (other.gameObject.tag == "Stage")
         {
-            //当たったオブジェクトを代入
-            gameObj = other.gameObject;
-
-            ////当たったオブジェクトについているUnitLotateを取得
-            //uniLot = gameObj.GetComponent<UnitLotate>();
-
-            //侵入したステージの子オブジェクトに
-            transform.parent = gameObj.transform;
+            uniLot = other.gameObject.GetComponent<UnitLotate>();
         }
-        //}
+
+        //モジュールが回ってなくて
+        if (uniLot.LOTATE == false)
+        {
+            //タグがStageのオブジェクトに衝突したら
+            if (other.gameObject.tag == "Stage")
+            {
+                transform.parent = null;
+
+                transform.parent = other.gameObject.transform;
+
+                uniLot = other.gameObject.GetComponent<UnitLotate>();
+                ////当たったオブジェクトを代入
+                //gameObj = other.gameObject;
+
+                //////当たったオブジェクトについているUnitLotateを取得
+                //uniLot = gameObj.GetComponent<UnitLotate>();
+
+                ////侵入したステージの子オブジェクトに
+                //transform.parent = gameObj.transform;
+            }
+        }
 
         //ボールにぶつかったら
         if (other.gameObject.tag == "Ball")
