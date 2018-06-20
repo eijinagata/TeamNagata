@@ -28,7 +28,7 @@ public class WingOpenScript : MonoBehaviour {
         if (Combo.GetCombocount() >= 10)//コンボカウントが１０以上になった場合
         {
             Timecount += Time.deltaTime;
-            WingAnim.SetInteger("Flagint",1);
+            WingAnim.SetBool("OpenFlag",true);
            
             if (Timecount >= 1.6f)
             {
@@ -39,7 +39,8 @@ public class WingOpenScript : MonoBehaviour {
         }
         if(Combo.GetCombocount()==0)//コンボカウントが０に戻った場合
         {
-            WingAnim.SetInteger("Flagint", 2);
+            WingAnim.SetBool("OpenFlag",false);
+            Timecount = 0;
             Particles[0].Stop();
             Particles[1].Stop();
             Particles[2].Stop();
@@ -48,7 +49,7 @@ public class WingOpenScript : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-
+        Seekence();
         
 
 	}
