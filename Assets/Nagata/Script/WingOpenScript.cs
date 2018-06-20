@@ -9,7 +9,7 @@ public class WingOpenScript : MonoBehaviour {
     bool wing1;
     bool wing2;
     float Timecount;
-    public int Seekint;
+    bool SeekFlag = false;
     public GameObject WingControle;
     public GameObject Combocount;
     public ParticleSystem[] Particles=new ParticleSystem[3];
@@ -23,13 +23,12 @@ public class WingOpenScript : MonoBehaviour {
         Particles[3] = Particles[3].GetComponent<ParticleSystem>();*/
     }
 	
-	// Update is called once per frame
-	void Update () {
-
-        if (Combo.GetCombocount() >= 10)
+    public void Seekence()
+    {
+        if (Combo.GetCombocount() >= 10)//コンボカウントが１０以上になった場合
         {
             Timecount += Time.deltaTime;
-            WingAnim.SetInteger("Seekint", 1);
+            WingAnim.SetInteger("Flagint",1);
            
             if (Timecount >= 1.6f)
             {
@@ -38,5 +37,19 @@ public class WingOpenScript : MonoBehaviour {
                 Particles[2].Play();
             }
         }
+        if(Combo.GetCombocount()==0)//コンボカウントが０に戻った場合
+        {
+            WingAnim.SetInteger("Flagint", 2);
+            Particles[0].Stop();
+            Particles[1].Stop();
+            Particles[2].Stop();
+        }
+
+    }
+	// Update is called once per frame
+	void Update () {
+
+        
+
 	}
 }
