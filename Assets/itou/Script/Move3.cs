@@ -7,7 +7,7 @@ public class Move3 : MonoBehaviour
     int countr;             //何回壁に当たったかを記録する変数
     int fps = 0;            //何フレーム経ったかを覚えておく変数
     float distance = 1.0f;  //Rayの長さ
-    float speed = 0.1f;     //移動速度
+    public float speed = 0.1f;     //移動速度//永田：パラメーターを外部から弄れるようにパブリック化
     bool frameFlag = false; //フレームを計っていいかダメかを判断するフラグ
     bool moveFlag = true;   //動いていいかダメかを判断するフラグ
     bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ

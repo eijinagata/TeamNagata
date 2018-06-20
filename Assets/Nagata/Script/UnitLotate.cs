@@ -47,12 +47,17 @@ public class UnitLotate : MonoBehaviour
 
     float HeatLevel = 1;//今どれだけオーバーヒートに近づいているかの数値
 
+    bool LeftRotStart = false;//左回転用のbool型
+
     bool isCoolDoun = false;//今クールタイムに入っているかどうかのフラグ
+
+    bool firstChenge = true;//
     /// <summary>
     /// フィールドここまで！！
     /// </summary>
     /// <returns></returns>
     /// 
+
     public bool LOTATE
     {
         set { lotateFlag = value; }
@@ -117,12 +122,12 @@ public class UnitLotate : MonoBehaviour
                 HeatLevel -= 0.2f;
             }
             LoteParticle.Play();//パーティクル発動！！
-            transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
+            transform.rotation = Quaternion.AngleAxis(Rot, -Vector3.up);
 
         }
         if (Input.GetMouseButtonDown(1) /* && !startRot*/&& Accessflag == true && OverHeatflag == false)
         {
-            startRot = true;
+            LeftRotStart = true;
             if (isCoolDoun == false)//オーバーヒートするまでHeatLevelに1を加算
             {
                 HeatLevel -= 0.2f;
@@ -141,6 +146,22 @@ public class UnitLotate : MonoBehaviour
             {
                 lotateFlag = false;
                 startRot = false;
+                time = 0;
+                degStart += 90;
+                degEnd += 90;
+                RotlLimit += 90;
+            }
+        }
+        if (LeftRotStart)
+        {
+            time += Time.deltaTime;//timeにdeltaTimeを加算
+            kakudo = Mathf.Lerp(degStart, degEnd, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
+            transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
+            lotateFlag = true;
+            if (kakudo >= RotlLimit)
+            {
+                lotateFlag = false;
+                LeftRotStart = false;
                 time = 0;
                 degStart += 90;
                 degEnd += 90;

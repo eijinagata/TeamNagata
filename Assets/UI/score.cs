@@ -33,7 +33,7 @@ public class score : MonoBehaviour {
     void Update()
     {
         //スコア表示
-        scorelabel.text = string.Format("Score：{0:00000}", scorecount);
+        scorelabel.text = string.Format("{0:00000}", scorecount);//永田スコアを削除
         
 
     }
