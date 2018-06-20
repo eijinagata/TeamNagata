@@ -33,7 +33,7 @@ public class UnitLotate : MonoBehaviour
 
     float RotlLimit = 90f;//一回のメソッドの実行でこの角度まで回るという角度限界
 
-    public float LoteSpeed;//回転スピードを設定できる変数。
+    public static float LoteSpeed=5;//回転スピードを設定できる変数。
 
     float Rot = 90.0f;//一度に回転する角度。
 

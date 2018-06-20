@@ -31,11 +31,10 @@ public class Move3 : MonoBehaviour
         //                  ↓Ray  ↓Rayが当たったオブジェクト ↓距離
         if (Physics.Raycast(ray, out hit, distance))
         {
-            //Debug.Log("まん丸お山に彩を");
             if (hit.collider.gameObject.tag == "Wall")
             {
                 moveFlag = false;
-                //Debug.Log("壁に当たった");
+                
                 switch(countr)
                 {
                     case 0:
@@ -46,7 +45,6 @@ public class Move3 : MonoBehaviour
                     case 1:
                         transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
                         countr++;
-                        //Debug.LogError("１８０度回転してます");
                         break;
                     case 2:
                         Destroy(gameObject);
@@ -67,21 +65,21 @@ public class Move3 : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        
+        uniLot = FindObjectOfType<UnitLotate>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         //ステージに衝突したら
-        if (gameObj != null)
-        {
-            //回ってる？回ってない？確認フラグを代入
-            unitFlag = uniLot.GetAccessflag();
-        }
+        //if (uniLot != null)
+        //{
+        //    //回ってる？回ってない？確認フラグを代入
+        //    unitFlag = uniLot.GetAccessflag();
+        //}
         
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (uniLot.LOTATE==false&&frameFlag==false)
         {
             RayMove();
 
@@ -109,19 +107,25 @@ public class Move3 : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (uniLot.LOTATE == false)
         {
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
             {
-                //当たったオブジェクトを代入
-                gameObj = other.gameObject; 
+                //親離れする
+                transform.parent = null;
 
-                //当たったオブジェクトについているUnitLotateを取得
-                uniLot = gameObj.GetComponent<UnitLotate>();
+                transform.parent = other.gameObject.transform;
 
-                //侵入したステージの子オブジェクトに
-                transform.parent = gameObj.transform; 
+                uniLot = other.gameObject.GetComponent<UnitLotate>();
+                ////当たったオブジェクトを代入
+                //gameObj = other.gameObject; 
+
+                //////当たったオブジェクトについているUnitLotateを取得
+                ////uniLot = gameObj.GetComponent<UnitLotate>();
+
+                ////侵入したステージの子オブジェクトに
+                //transform.parent = gameObj.transform; 
             }
         }
 
@@ -134,7 +138,7 @@ public class Move3 : MonoBehaviour
             //フレームをカウント開始
             frameFlag = true;
 
-            moveFlag = false;
+            speed = 0.01f;
         }
     }
 }

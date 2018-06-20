@@ -8,7 +8,7 @@ public class EnemyMove : MonoBehaviour
     //int hitCountr;          //何回ボールに当たったかを記録する変数
     public int maxEnemy;    //フィールドに存在できるエネミーの上限
     static int date = 0;    //今ゲーム内に何体敵がいるかを記録する変数
-    float distance = 1.5f;  //Rayの長さ
+    float distance = 1.0f;  //Rayの長さ
     float speed = 0.1f;     //移動速度
     bool moveFlag = true;   //動いていいかダメかを判断するフラグ
     bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ
@@ -35,7 +35,7 @@ public class EnemyMove : MonoBehaviour
         //                  ↓Ray  ↓Rayが当たったオブジェクト ↓距離
         if (Physics.Raycast(ray, out hit, distance))
         {
-            if(hit.collider.gameObject.tag == "DestroyObj")
+            if (hit.collider.gameObject.tag == "DestroyObj")
             {
                 transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
             }
@@ -75,20 +75,22 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         date++;
+        uniLot = FindObjectOfType<UnitLotate>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //ステージに衝突したら
-        if (gameObj != null)
-        {
-            //回ってる？回ってない？確認フラグを代入
-            unitFlag = uniLot.GetAccessflag();
-        }
-      
+        //if (gameObj != null)
+        //{
+        //    //回ってる？回ってない？確認フラグを代入
+        //    //unitFlag = uniLot.GetAccessflag();
+        //    uniLot = FindObjectOfType<UnitLotate>();
+        //}
+        
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (uniLot.LOTATE == false)
         {
             RayMove();
 
@@ -118,20 +120,30 @@ public class EnemyMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Stage")
+        {
+            uniLot = other.gameObject.GetComponent<UnitLotate>();
+        }
+
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (uniLot.LOTATE == false)
         {
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
             {
-                //当たったオブジェクトを代入
-                gameObj = other.gameObject;
+                transform.parent = null;
 
-                //当たったオブジェクトについているUnitLotateを取得
-                uniLot = gameObj.GetComponent<UnitLotate>();
+                transform.parent = other.gameObject.transform;
 
-                //侵入したステージの子オブジェクトに
-                transform.parent = gameObj.transform;
+                uniLot = other.gameObject.GetComponent<UnitLotate>();
+                ////当たったオブジェクトを代入
+                //gameObj = other.gameObject;
+
+                //////当たったオブジェクトについているUnitLotateを取得
+                //uniLot = gameObj.GetComponent<UnitLotate>();
+
+                ////侵入したステージの子オブジェクトに
+                //transform.parent = gameObj.transform;
             }
         }
 
