@@ -11,7 +11,7 @@ public class time : MonoBehaviour {
 	// Use this for initialization
     public void Start () {
         //制限時間
-        timecount = 60;
+        timecount = 3;
         
 	}
 	
@@ -30,7 +30,7 @@ public class time : MonoBehaviour {
         else
         {
             //AddScore呼出し
-            //FindObjectOfType<score>().AddScore(1);
+            FindObjectOfType<score>().AddScore(1);
         }
     }
 }
