@@ -13,14 +13,17 @@ public class GoalMove : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        score = 100;    //仮のスコア
-        penalty = 500;  //仮のペナルティ	
+        Debug.LogError("届け、私の想い");
+        //publicにしてインスペクターから入れなくてもstartで代入できます
+        //ScoreCount = GameObject.Find("UIController");
 
         //なぜかUpdate内で行われているGetComponentがありますが、Start内でこんな感じで書けますよ
         /*
+        //パターン１
         Score = GameObject.Find("UIController").GetComponent<score>();
         GetCombo= GameObject.Find("UIController").GetComponent<combo>();
 
+        //パターン２
         Score = FindObjectOfType<score>();
         GetCombo = FindObjectOfType<combo>();
         */
