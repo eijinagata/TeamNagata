@@ -27,11 +27,11 @@ public class UnitLotate : MonoBehaviour
 
     float kakudo = 0f;//今の角度
 
-    float degStart = 0f;//Lerp回転の開始地点。
+  public  float degStart = 0f;//Lerp回転の開始地点。
 
-    float degEnd = 90f;//Lerp回転の終了地点。
+  public  float degEnd = 90f;//Lerp回転の終了地点。
 
-    float RotlLimit = 90f;//一回のメソッドの実行でこの角度まで回るという角度限界
+  public float RotlLimit = 90f;//一回のメソッドの実行でこの角度まで回るという角度限界
 
     public static float LoteSpeed=5;//回転スピードを設定できる変数。
 
@@ -51,7 +51,7 @@ public class UnitLotate : MonoBehaviour
 
     bool isCoolDoun = false;//今クールタイムに入っているかどうかのフラグ
 
-    bool firstChenge = true;//
+    bool firstChenge = true;//それぞれ、右回転左回転が初めての場合。
     /// <summary>
     /// フィールドここまで！！
     /// </summary>
@@ -122,15 +122,22 @@ public class UnitLotate : MonoBehaviour
                 HeatLevel -= 0.2f;
             }
             LoteParticle.Play();//パーティクル発動！！
-            transform.rotation = Quaternion.AngleAxis(Rot, -Vector3.up);
+            transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
 
         }
-        if (Input.GetMouseButtonDown(1) /* && !startRot*/&& Accessflag == true && OverHeatflag == false)
+        if (Input.GetMouseButtonDown(1) && !LeftRotStart&& Accessflag == true && OverHeatflag == false)
         {
             LeftRotStart = true;
             if (isCoolDoun == false)//オーバーヒートするまでHeatLevelに1を加算
             {
                 HeatLevel -= 0.2f;
+            }
+            if (firstChenge==true)
+            {
+                degStart -= 90;
+                degEnd -= 90;
+                RotlLimit -= 90;
+                firstChenge = false;
             }
             LoteParticle.Play();//パーティクル発動！！
             transform.rotation = Quaternion.AngleAxis(Rot, Vector3.up);
@@ -155,17 +162,17 @@ public class UnitLotate : MonoBehaviour
         if (LeftRotStart)
         {
             time += Time.deltaTime;//timeにdeltaTimeを加算
-            kakudo = Mathf.Lerp(degStart, degEnd, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
-            transform.rotation = Quaternion.AngleAxis(kakudo, Vector3.up);//kakudo分右に回転させる処理。
+            kakudo = Mathf.Lerp(degEnd, degStart, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
+            transform.rotation = Quaternion.AngleAxis(-kakudo, -Vector3.up);//kakudo分右に回転させる処理。
             lotateFlag = true;
-            if (kakudo >= RotlLimit)
+            if (-kakudo <= RotlLimit)
             {
                 lotateFlag = false;
                 LeftRotStart = false;
                 time = 0;
-                degStart += 90;
-                degEnd += 90;
-                RotlLimit += 90;
+                degStart -= 90;
+                degEnd -= 90;
+                RotlLimit -= 90;
             }
         }
     }

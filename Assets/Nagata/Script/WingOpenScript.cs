@@ -22,14 +22,14 @@ public class WingOpenScript : MonoBehaviour {
         Particles[2] = Particles[2].GetComponent<ParticleSystem>();
         Particles[3] = Particles[3].GetComponent<ParticleSystem>();*/
     }
-	
+
     public void Seekence()
     {
         if (Combo.GetCombocount() >= 10)//コンボカウントが１０以上になった場合
         {
             Timecount += Time.deltaTime;
-            WingAnim.SetBool("OpenFlag",true);
-           
+            WingAnim.SetBool("OpenFlag", true);
+
             if (Timecount >= 1.6f)
             {
                 Particles[0].Play();
@@ -37,15 +37,25 @@ public class WingOpenScript : MonoBehaviour {
                 Particles[2].Play();
             }
         }
-        if(Combo.GetCombocount()==0)//コンボカウントが０に戻った場合
+        if (Combo.GetCombocount() == 0)//コンボカウントが０に戻った場合
         {
-            WingAnim.SetBool("OpenFlag",false);
+            Particles[0].startColor = Color.blue;
+            Particles[1].startColor = Color.blue;
+            Particles[2].startColor = Color.blue;
+            WingAnim.SetBool("OpenFlag", false);
             Timecount = 0;
             Particles[0].Stop();
             Particles[1].Stop();
             Particles[2].Stop();
         }
+        if (Combo.GetCombocount() >= 30)//コンボカウントが３０以上になった場合
+        {
+            Timecount += Time.deltaTime;
+            Particles[0].startColor = Color.red;
+            Particles[1].startColor = Color.red;
+            Particles[2].startColor = Color.red;
 
+        }
     }
 	// Update is called once per frame
 	void Update () {
