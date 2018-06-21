@@ -15,10 +15,19 @@ public class GoalMove : MonoBehaviour {
     {
         score = 100;    //仮のスコア
         penalty = 500;  //仮のペナルティ	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        //なぜかUpdate内で行われているGetComponentがありますが、Start内でこんな感じで書けますよ
+        /*
+        Score = GameObject.Find("UIController").GetComponent<score>();
+        GetCombo= GameObject.Find("UIController").GetComponent<combo>();
+
+        Score = FindObjectOfType<score>();
+        GetCombo = FindObjectOfType<combo>();
+        */
+    }
+
+    // Update is called once per frame
+    void Update () {
         Score = ScoreCount.GetComponent<score>();
         GetCombo = ScoreCount.GetComponent<combo>();
 	}

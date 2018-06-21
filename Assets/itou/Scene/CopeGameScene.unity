@@ -296,7 +296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timecount: 0
   timelabel: {fileID: 1066891544}
-  gameobject: {fileID: 0}
 --- !u!4 &147452460
 Transform:
   m_ObjectHideFlags: 0
@@ -935,6 +934,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 114470811756369452, guid: b280f70a4902ff64eb0c3629be8feb8b,
+        type: 2}
+      propertyPath: ScoreCount
+      value: 
+      objectReference: {fileID: 147452458}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b280f70a4902ff64eb0c3629be8feb8b, type: 2}
   m_IsPrefabParent: 0
