@@ -13,7 +13,8 @@ public class GoalMove : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        Debug.LogError("届け、私の想い");
+        Score = ScoreCount.GetComponent<score>();
+        GetCombo = ScoreCount.GetComponent<combo>();
         //publicにしてインスペクターから入れなくてもstartで代入できます
         //ScoreCount = GameObject.Find("UIController");
 
@@ -31,8 +32,7 @@ public class GoalMove : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Score = ScoreCount.GetComponent<score>();
-        GetCombo = ScoreCount.GetComponent<combo>();
+
 	}
 
     private void OnTriggerEnter(Collider other)
