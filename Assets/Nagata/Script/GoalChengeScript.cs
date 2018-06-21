@@ -7,6 +7,7 @@ public class GoalChengeScript : MonoBehaviour
     float timecount = 5;//次の位置へ移動するまでのディレイ
     int _frame = 0;//点滅させる為の値
     bool swich;//わざと
+    float SwichTime;//変更されるまでの時間の値。
 
     // Use this for initialization
     void Start()
@@ -41,11 +42,11 @@ public class GoalChengeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        SwichTime += Time.deltaTime;
         float root = transform.localEulerAngles.y;
         //オブジェクトの向きを取得
 
-        if (Input.GetKeyDown(KeyCode.B))//Bを押したら点滅&次の位置へ移動
+        if (SwichTime>=10)//Bを押したら点滅&次の位置へ移動
         {
             swich = true;
         }
@@ -68,6 +69,7 @@ public class GoalChengeScript : MonoBehaviour
 
             if (timecount < 0)//移動させる処理
             {
+                SwichTime = 0;
                 Renderer ren = gameObject.GetComponent<Renderer>();//レンダラーをtrueにしないと消えたままなのでtrueを返す
                 ren.enabled = true;
 

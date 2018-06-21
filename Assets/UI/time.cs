@@ -8,12 +8,24 @@ public class time : MonoBehaviour {
     //time変数
     public float timecount;
     public Text timelabel;
+   // public GameObject gameobject;
+
+    //大切だから消さないで　タイムを取得する時に使う
+    public float GetTime()
+    {
+        return timecount;
+    } 
+
 	// Use this for initialization
     public void Start () {
         //制限時間
-        timecount = 3;
+        timecount = 60;
         
 	}
+    public float GetTimecount()
+    {
+        return timecount;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,8 +41,8 @@ public class time : MonoBehaviour {
         }
         else
         {
-            //AddScore呼出し
-            FindObjectOfType<score>().AddScore(1);
+            //ポイント数
+           // FindObjectOfType<score>().AddScore(1);
         }
     }
 }
