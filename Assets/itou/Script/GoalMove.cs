@@ -15,19 +15,6 @@ public class GoalMove : MonoBehaviour {
     {
         Score = ScoreCount.GetComponent<score>();
         GetCombo = ScoreCount.GetComponent<combo>();
-        //publicにしてインスペクターから入れなくてもstartで代入できます
-        //ScoreCount = GameObject.Find("UIController");
-
-        //なぜかUpdate内で行われているGetComponentがありますが、Start内でこんな感じで書けますよ
-        /*
-        //パターン１
-        Score = GameObject.Find("UIController").GetComponent<score>();
-        GetCombo= GameObject.Find("UIController").GetComponent<combo>();
-
-        //パターン２
-        Score = FindObjectOfType<score>();
-        GetCombo = FindObjectOfType<combo>();
-        */
     }
 
     // Update is called once per frame
