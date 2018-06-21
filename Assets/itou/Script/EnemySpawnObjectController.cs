@@ -6,10 +6,12 @@ public class EnemySpawnObjectController : MonoBehaviour
 {
     public GameObject enemy;    //生成するオブジェクト
     EnemyMove enemyMove;        //EnemyMove内のDATEアクセサーを使用したいから宣言
+    pauseController button;
 
 	// Use this for initialization
 	void Start ()
     {
+        button = FindObjectOfType<pauseController>();
         //EnemyMoveを取得
         enemyMove = FindObjectOfType<EnemyMove>();	
 	}
@@ -17,12 +19,15 @@ public class EnemySpawnObjectController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        //フィールドから敵がいなくなったら１体スポーン
-        if (enemyMove.DATE <= 1)
+        if (button.PAUSE == false)
         {
-            enemy.transform.position = transform.position;
-            enemy.transform.forward = transform.forward;
-            Instantiate(enemy);
+            //フィールドから敵がいなくなったら１体スポーン
+            if (enemyMove.DATE <= 1)
+            {
+                enemy.transform.position = transform.position;
+                enemy.transform.forward = transform.forward;
+                Instantiate(enemy);
+            }
         }
     }
 }

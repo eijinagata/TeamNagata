@@ -15,6 +15,7 @@ public class EnemyMove : MonoBehaviour
     GameObject gameObj;     //当たったオブジェクトを覚えておく変数
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
     public GameObject my;   //自分を覚えるための変数
+    pauseController button;
 
     //変数名dateにアクセスしたいときに使う
     public int DATE
@@ -74,6 +75,7 @@ public class EnemyMove : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        button = FindObjectOfType<pauseController>();
         date++;
         uniLot = FindObjectOfType<UnitLotate>();
     }
@@ -81,41 +83,44 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ステージに衝突したら
-        //if (gameObj != null)
-        //{
-        //    //回ってる？回ってない？確認フラグを代入
-        //    //unitFlag = uniLot.GetAccessflag();
-        //    uniLot = FindObjectOfType<UnitLotate>();
-        //}
-        
-        //モジュールが回ってなくて
-        if (uniLot.LOTATE == false)
+        if (button.PAUSE == false)
         {
-            RayMove();
+            //ステージに衝突したら
+            //if (gameObj != null)
+            //{
+            //    //回ってる？回ってない？確認フラグを代入
+            //    //unitFlag = uniLot.GetAccessflag();
+            //    uniLot = FindObjectOfType<UnitLotate>();
+            //}
 
-            //Rayが何にもぶつかってなかったら
-            if (moveFlag == true)
+            //モジュールが回ってなくて
+            if (uniLot.LOTATE == false)
             {
-                //RayMove();
-                transform.position += transform.TransformDirection(Vector3.forward) * speed;
+                RayMove();
+
+                //Rayが何にもぶつかってなかったら
+                if (moveFlag == true)
+                {
+                    //RayMove();
+                    transform.position += transform.TransformDirection(Vector3.forward) * speed;
+                }
             }
+
+            //if (date >= maxEnemy)
+            //{
+            //    hitCountr = 0;
+            //}
+
+            ////十回ボールに当たったら分身を生成
+            //if (hitCountr == 10 && date < maxEnemy)
+            //{
+            //    moveFlag = false;
+            //    my.transform.parent = null;
+            //    Instantiate(my, transform.position, Quaternion.identity);
+            //    moveFlag = true;
+            //    hitCountr = 0;
+            //}
         }
-
-        //if (date >= maxEnemy)
-        //{
-        //    hitCountr = 0;
-        //}
-
-        ////十回ボールに当たったら分身を生成
-        //if (hitCountr == 10 && date < maxEnemy)
-        //{
-        //    moveFlag = false;
-        //    my.transform.parent = null;
-        //    Instantiate(my, transform.position, Quaternion.identity);
-        //    moveFlag = true;
-        //    hitCountr = 0;
-        //}
     }
 
     private void OnTriggerEnter(Collider other)

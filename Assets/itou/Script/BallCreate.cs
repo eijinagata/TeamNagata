@@ -10,10 +10,12 @@ public class BallCreate : MonoBehaviour
     time timeScript;
     bool moveFlag = false;
     UnitLotate uniLot;
+    pauseController button;
    
 	// Use this for initialization
 	void Start ()
     {
+        button = FindObjectOfType<pauseController>();
         timeScript = FindObjectOfType<time>();
         //uniLot = FindObjectOfType<UnitLotate>();
     }
@@ -23,7 +25,7 @@ public class BallCreate : MonoBehaviour
     {
         time = timeScript.GetTimecount();
         uniLot = FindObjectOfType<UnitLotate>();
-        if (uniLot.LOTATE == false)
+        if (uniLot.LOTATE == false && button.PAUSE == false)
         {
             shootTime += Time.deltaTime;
         }
@@ -33,7 +35,7 @@ public class BallCreate : MonoBehaviour
             moveFlag = false;
         }
 
-        if (time > 0 /*&& Input.GetKeyDown(KeyCode.Space)*/ && shootTime > 0.5f)
+        if (time > 0 /*&& Input.GetKeyDown(KeyCode.Space)*/ && shootTime > 0.5f )
         {
             shootTime = 0.0f;
             ball.transform.position = transform.position;

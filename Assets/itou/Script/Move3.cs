@@ -13,6 +13,7 @@ public class Move3 : MonoBehaviour
     bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ
     GameObject gameObj;     //当たったオブジェクトを覚えておく変数
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
+    pauseController button;
 
     public void PlusSpeed(float value)
     {
@@ -66,40 +67,44 @@ public class Move3 : MonoBehaviour
     void Start ()
     {
         uniLot = FindObjectOfType<UnitLotate>();
+        button = FindObjectOfType<pauseController>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //ステージに衝突したら
-        //if (uniLot != null)
-        //{
-        //    //回ってる？回ってない？確認フラグを代入
-        //    unitFlag = uniLot.GetAccessflag();
-        //}
-        
-        //モジュールが回ってなくて
-        if (uniLot.LOTATE==false&&frameFlag==false)
+        if (button.PAUSE == false)
         {
-            RayMove();
+            //ステージに衝突したら
+            //if (uniLot != null)
+            //{
+            //    //回ってる？回ってない？確認フラグを代入
+            //    unitFlag = uniLot.GetAccessflag();
+            //}
 
-            //Rayが何にもぶつかってなかったら
-            if (moveFlag == true)
-            {               
-                //RayMove();
-                transform.position += transform.TransformDirection(Vector3.forward) * speed;
-            }
-        }
-
-        //縁取りに衝突したらフレームを計る
-        if (frameFlag == true)
-        {
-            fps++;
-
-            //300フレーム動いたらこのオブジェクトを消す
-            if (fps == 300)
+            //モジュールが回ってなくて
+            if (uniLot.LOTATE == false && frameFlag == false)
             {
-                Destroy(gameObject);
+                RayMove();
+
+                //Rayが何にもぶつかってなかったら
+                if (moveFlag == true)
+                {
+                    //RayMove();
+                    transform.position += transform.TransformDirection(Vector3.forward) * speed;
+                }
+            }
+
+            //縁取りに衝突したらフレームを計る
+            if (frameFlag == true)
+            {
+                fps++;
+
+                //300フレーム動いたらこのオブジェクトを消す
+                if (fps == 300)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
