@@ -23,7 +23,7 @@ public class BallCreate : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        //time = timeScript.GetTimecount();
+        time = timeScript.GetTimecount();
         uniLot = FindObjectOfType<UnitLotate>();
         if (uniLot.LOTATE == false)
         {

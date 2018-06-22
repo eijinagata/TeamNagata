@@ -10,12 +10,6 @@ public class time : MonoBehaviour {
     public Text timelabel;
    // public GameObject gameobject;
 
-    //大切だから消さないで　タイムを取得する時に使う
-    public float GetTime()
-    {
-        return timecount;
-    } 
-
 	// Use this for initialization
     public void Start () {
         //制限時間
