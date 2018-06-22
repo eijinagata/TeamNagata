@@ -75,7 +75,7 @@ public class EnemyMove : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        button = FindObjectOfType<pauseController>();
+        //button = FindObjectOfType<pauseController>();
         date++;
         uniLot = FindObjectOfType<UnitLotate>();
     }
@@ -83,8 +83,8 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (button.PAUSE == false)
-        {
+        //if (button.PAUSE == false)
+        //{
             //ステージに衝突したら
             //if (gameObj != null)
             //{
@@ -120,7 +120,7 @@ public class EnemyMove : MonoBehaviour
             //    moveFlag = true;
             //    hitCountr = 0;
             //}
-        }
+        //}
     }
 
     private void OnTriggerEnter(Collider other)

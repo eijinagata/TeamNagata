@@ -11,7 +11,8 @@ public class EnemySpawnObjectController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        button = FindObjectOfType<pauseController>();
+        //button = FindObjectOfType<pauseController>();
+
         //EnemyMoveを取得
         enemyMove = FindObjectOfType<EnemyMove>();	
 	}
@@ -19,8 +20,8 @@ public class EnemySpawnObjectController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (button.PAUSE == false)
-        {
+        //if (button.PAUSE == false)
+        //{
             //フィールドから敵がいなくなったら１体スポーン
             if (enemyMove.DATE <= 1)
             {
@@ -28,6 +29,6 @@ public class EnemySpawnObjectController : MonoBehaviour
                 enemy.transform.forward = transform.forward;
                 Instantiate(enemy);
             }
-        }
+        //}
     }
 }

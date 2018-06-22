@@ -67,14 +67,14 @@ public class Move3 : MonoBehaviour
     void Start ()
     {
         uniLot = FindObjectOfType<UnitLotate>();
-        button = FindObjectOfType<pauseController>();
+        //button = FindObjectOfType<pauseController>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (button.PAUSE == false)
-        {
+        //if (button.PAUSE == false)
+        //{
             //ステージに衝突したら
             //if (uniLot != null)
             //{
@@ -106,7 +106,7 @@ public class Move3 : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-        }
+        //}
     }
 
     private void OnTriggerEnter(Collider other)

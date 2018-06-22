@@ -15,7 +15,7 @@ public class BallCreate : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        button = FindObjectOfType<pauseController>();
+        //button = FindObjectOfType<pauseController>();
         timeScript = FindObjectOfType<time>();
         //uniLot = FindObjectOfType<UnitLotate>();
     }
@@ -25,7 +25,7 @@ public class BallCreate : MonoBehaviour
     {
         //time = timeScript.GetTimecount();
         uniLot = FindObjectOfType<UnitLotate>();
-        if (uniLot.LOTATE == false && button.PAUSE == false)
+        if (uniLot.LOTATE == false)
         {
             shootTime += Time.deltaTime;
         }
