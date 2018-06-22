@@ -47,4 +47,9 @@ public class score : MonoBehaviour {
         Debug.Log(scorecount);
     }
 
+    // スコア取得
+    public int GetScore()
+    {
+        return (int)scorecount;
+    }
 }
