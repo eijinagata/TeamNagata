@@ -15,7 +15,7 @@ public class EnemyMove : MonoBehaviour
     GameObject gameObj;     //当たったオブジェクトを覚えておく変数
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
     public GameObject my;   //自分を覚えるための変数
-    pauseController button;
+    Pause pause;
 
     //変数名dateにアクセスしたいときに使う
     public int DATE
@@ -75,6 +75,7 @@ public class EnemyMove : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        pause = GameObject.Find("Button").GetComponent<Pause>();
         //button = FindObjectOfType<pauseController>();
         date++;
         uniLot = FindObjectOfType<UnitLotate>();
@@ -85,14 +86,15 @@ public class EnemyMove : MonoBehaviour
     {
         //if (button.PAUSE == false)
         //{
-            //ステージに衝突したら
-            //if (gameObj != null)
-            //{
-            //    //回ってる？回ってない？確認フラグを代入
-            //    //unitFlag = uniLot.GetAccessflag();
-            //    uniLot = FindObjectOfType<UnitLotate>();
-            //}
-
+        //ステージに衝突したら
+        //if (gameObj != null)
+        //{
+        //    //回ってる？回ってない？確認フラグを代入
+        //    //unitFlag = uniLot.GetAccessflag();
+        //    uniLot = FindObjectOfType<UnitLotate>();
+        //}
+        if (pause.FLAG == false)
+        {
             //モジュールが回ってなくて
             if (uniLot.LOTATE == false)
             {
@@ -105,6 +107,7 @@ public class EnemyMove : MonoBehaviour
                     transform.position += transform.TransformDirection(Vector3.forward) * speed;
                 }
             }
+        }
 
             //if (date >= maxEnemy)
             //{

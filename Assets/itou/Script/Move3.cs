@@ -14,6 +14,7 @@ public class Move3 : MonoBehaviour
     GameObject gameObj;     //当たったオブジェクトを覚えておく変数
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
     pauseController button;
+    Pause pause;
 
     public void PlusSpeed(float value)
     {
@@ -66,6 +67,7 @@ public class Move3 : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        pause = GameObject.Find("Button").GetComponent<Pause>();
         uniLot = FindObjectOfType<UnitLotate>();
         //button = FindObjectOfType<pauseController>();
     }
@@ -75,13 +77,15 @@ public class Move3 : MonoBehaviour
     {
         //if (button.PAUSE == false)
         //{
-            //ステージに衝突したら
-            //if (uniLot != null)
-            //{
-            //    //回ってる？回ってない？確認フラグを代入
-            //    unitFlag = uniLot.GetAccessflag();
-            //}
+        //ステージに衝突したら
+        //if (uniLot != null)
+        //{
+        //    //回ってる？回ってない？確認フラグを代入
+        //    unitFlag = uniLot.GetAccessflag();
+        //}
 
+        if (pause.FLAG == false)
+        {
             //モジュールが回ってなくて
             if (uniLot.LOTATE == false && frameFlag == false)
             {
@@ -106,6 +110,7 @@ public class Move3 : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
+        }
         //}
     }
 
