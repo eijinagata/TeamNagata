@@ -52,6 +52,8 @@ public class UnitLotate : MonoBehaviour
     bool isCoolDoun = false;//今クールタイムに入っているかどうかのフラグ
 
     bool firstChenge = true;//それぞれ、右回転左回転が初めての場合。
+
+    AudioSource audio;
     /// <summary>
     /// フィールドここまで！！
     /// </summary>
@@ -151,6 +153,7 @@ public class UnitLotate : MonoBehaviour
             lotateFlag = true;
             if (kakudo >= RotlLimit)
             {
+                audio.PlayOneShot(audio.clip);
                 lotateFlag = false;
                 startRot = false;
                 time = 0;
@@ -161,6 +164,7 @@ public class UnitLotate : MonoBehaviour
         }
         if (LeftRotStart)
         {
+            //audio.PlayOneShot(audio.clip);
             time += Time.deltaTime;//timeにdeltaTimeを加算
             kakudo = Mathf.Lerp(degEnd, degStart, time * LoteSpeed);//degStart地点からdegEnd地点まで時間×～倍速で回転させる。
             transform.rotation = Quaternion.AngleAxis(-kakudo, -Vector3.up);//kakudo分右に回転させる処理。
@@ -196,6 +200,8 @@ public class UnitLotate : MonoBehaviour
         green = rend.material.color.g;
         blue = rend.material.color.b;
         alpha = rend.material.color.a;
+
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
