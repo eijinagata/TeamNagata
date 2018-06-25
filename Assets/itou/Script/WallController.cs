@@ -15,43 +15,43 @@ public class WallController : MonoBehaviour
     bool alphaFlag = false;
 
     // Use this for initialization
-    void Start()
-    {
-        alpha = maxAlpha;
+    //void Start()
+    //{
+    //    alpha = maxAlpha;
 
-        rend = GetComponent<Renderer>();
+    //    rend = GetComponent<Renderer>();
 
-        red = rend.material.color.r;
-        green = rend.material.color.g;
-        blue = rend.material.color.b;
-    }
+    //    red = rend.material.color.r;
+    //    green = rend.material.color.g;
+    //    blue = rend.material.color.b;
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
-        //薄くするか濃くするか
-        if (alphaFlag == false)
-        {
-            alpha -= speed;
-        }
-        else
-        {
-            alpha += speed;
-        }
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    //薄くするか濃くするか
+    //    if (alphaFlag == false)
+    //    {
+    //        alpha -= speed;
+    //    }
+    //    else
+    //    {
+    //        alpha += speed;
+    //    }
 
-        //薄くするべきか濃くするべきか
-        if (alpha < minAlpha)
-        {
-            alphaFlag = true;
-        }
-        else if (alpha > maxAlpha)
-        {
-            alphaFlag = false;
-        }
+    //    //薄くするべきか濃くするべきか
+    //    if (alpha < minAlpha)
+    //    {
+    //        alphaFlag = true;
+    //    }
+    //    else if (alpha > maxAlpha)
+    //    {
+    //        alphaFlag = false;
+    //    }
 
-        //RGBαを更新
-        rend.material.color = new Color(red, green, blue, alpha);
-    }
+    //    //RGBαを更新
+    //    rend.material.color = new Color(red, green, blue, alpha);
+    //}
 
     private void OnTriggerEnter(Collider other)
     {

@@ -8,13 +8,7 @@ public class time : MonoBehaviour {
     //time変数
     public float timecount;
     public Text timelabel;
-    public GameObject gameobject;
-
-    //大切だから消さないで　タイムを取得する時に使う
-    public float GetTime()
-    {
-        return timecount;
-    } 
+   // public GameObject gameobject;
 
 	// Use this for initialization
     public void Start () {
@@ -42,7 +36,7 @@ public class time : MonoBehaviour {
         else
         {
             //ポイント数
-            FindObjectOfType<score>().AddScore(1);
+           // FindObjectOfType<score>().AddScore(1);
         }
     }
 }

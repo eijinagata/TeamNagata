@@ -552,8 +552,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  HeatLeveltext: {fileID: 0}
-  LoteSpeed: 6
   LoteParticle: {fileID: 198433908982056680}
   OverHeatSmog: {fileID: 198380188958545468}
 --- !u!198 &198380188958545468

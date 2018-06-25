@@ -7,12 +7,13 @@ public class Move3 : MonoBehaviour
     int countr;             //何回壁に当たったかを記録する変数
     int fps = 0;            //何フレーム経ったかを覚えておく変数
     float distance = 1.0f;  //Rayの長さ
-    float speed = 0.1f;     //移動速度
+    public float speed = 0.1f;     //移動速度//永田：パラメーターを外部から弄れるようにパブリック化
     bool frameFlag = false; //フレームを計っていいかダメかを判断するフラグ
     bool moveFlag = true;   //動いていいかダメかを判断するフラグ
     bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ
     GameObject gameObj;     //当たったオブジェクトを覚えておく変数
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
+    pauseController button;
 
     public void PlusSpeed(float value)
     {
@@ -31,11 +32,10 @@ public class Move3 : MonoBehaviour
         //                  ↓Ray  ↓Rayが当たったオブジェクト ↓距離
         if (Physics.Raycast(ray, out hit, distance))
         {
-            //Debug.Log("まん丸お山に彩を");
             if (hit.collider.gameObject.tag == "Wall")
             {
                 moveFlag = false;
-                //Debug.Log("壁に当たった");
+                
                 switch(countr)
                 {
                     case 0:
@@ -46,7 +46,6 @@ public class Move3 : MonoBehaviour
                     case 1:
                         transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
                         countr++;
-                        //Debug.LogError("１８０度回転してます");
                         break;
                     case 2:
                         Destroy(gameObject);
@@ -67,61 +66,71 @@ public class Move3 : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        
+        uniLot = FindObjectOfType<UnitLotate>();
+        //button = FindObjectOfType<pauseController>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //ステージに衝突したら
-        if (gameObj != null)
-        {
-            //回ってる？回ってない？確認フラグを代入
-            unitFlag = uniLot.GetAccessflag();
-        }
-        
-        //モジュールが回ってなくて
-        if (unitFlag == false)
-        {
-            RayMove();
+        //if (button.PAUSE == false)
+        //{
+            //ステージに衝突したら
+            //if (uniLot != null)
+            //{
+            //    //回ってる？回ってない？確認フラグを代入
+            //    unitFlag = uniLot.GetAccessflag();
+            //}
 
-            //Rayが何にもぶつかってなかったら
-            if (moveFlag == true)
-            {               
-                //RayMove();
-                transform.position += transform.TransformDirection(Vector3.forward) * speed;
-            }
-        }
-
-        //縁取りに衝突したらフレームを計る
-        if (frameFlag == true)
-        {
-            fps++;
-
-            //300フレーム動いたらこのオブジェクトを消す
-            if (fps == 300)
+            //モジュールが回ってなくて
+            if (uniLot.LOTATE == false && frameFlag == false)
             {
-                Destroy(gameObject);
+                RayMove();
+
+                //Rayが何にもぶつかってなかったら
+                if (moveFlag == true)
+                {
+                    //RayMove();
+                    transform.position += transform.TransformDirection(Vector3.forward) * speed;
+                }
             }
-        }
+
+            //縁取りに衝突したらフレームを計る
+            if (frameFlag == true)
+            {
+                fps++;
+
+                //300フレーム動いたらこのオブジェクトを消す
+                if (fps == 300)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //モジュールが回ってなくて
-        if (unitFlag == false)
+        if (uniLot.LOTATE == false)
         {
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
             {
-                //当たったオブジェクトを代入
-                gameObj = other.gameObject; 
+                //親離れする
+                transform.parent = null;
 
-                //当たったオブジェクトについているUnitLotateを取得
-                uniLot = gameObj.GetComponent<UnitLotate>();
+                transform.parent = other.gameObject.transform;
 
-                //侵入したステージの子オブジェクトに
-                transform.parent = gameObj.transform; 
+                uniLot = other.gameObject.GetComponent<UnitLotate>();
+                ////当たったオブジェクトを代入
+                //gameObj = other.gameObject; 
+
+                //////当たったオブジェクトについているUnitLotateを取得
+                ////uniLot = gameObj.GetComponent<UnitLotate>();
+
+                ////侵入したステージの子オブジェクトに
+                //transform.parent = gameObj.transform; 
             }
         }
 
@@ -134,7 +143,7 @@ public class Move3 : MonoBehaviour
             //フレームをカウント開始
             frameFlag = true;
 
-            moveFlag = false;
+            speed = 0.01f;
         }
     }
 }

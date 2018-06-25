@@ -7,9 +7,21 @@ public class score : MonoBehaviour {
 
     //スコア変数
     float scorecount;
+    float Threeharf;
     public Text scorelabel;
     //ポイント固定値
     const int SCORE_POINT = 100;
+
+    public float GetScorecount()//スコアのゲットアクセサ
+    {
+        return scorecount;
+    }
+    public void SetEnemyGoalScore(int Enemy)
+    {
+        Threeharf = scorecount;
+        Threeharf /= Enemy;
+        scorecount -= Threeharf;
+    }
     
     void Start()
     {
@@ -21,7 +33,7 @@ public class score : MonoBehaviour {
     void Update()
     {
         //スコア表示
-        scorelabel.text = string.Format("Score：{0:00000}", scorecount);
+        scorelabel.text = string.Format("{0:00000}", scorecount);//永田スコアを削除
         
 
     }
@@ -32,7 +44,12 @@ public class score : MonoBehaviour {
         float com=(1.0f+((1.0f+combo)/10.0f))-0.1f;
         //ポイント値*コンボ倍率
         scorecount += SCORE_POINT * com;
-        //Debug.Log(scorecount);
+        Debug.Log(scorecount);
     }
 
+    // スコア取得
+    public int GetScore()
+    {
+        return (int)scorecount;
+    }
 }

@@ -10,9 +10,9 @@ public class AccellScript : MonoBehaviour {
         if (other.gameObject.tag == "Ball")
         {
             gameobj = other.gameObject;
-            AccellSphia = gameobj.GetComponent<Move3>();
-            
+            AccellSphia = gameobj.GetComponent<Move3>();            
             AccellSphia.PlusSpeed(0.3f);
+
         }
     }
     // Use this for initialization
