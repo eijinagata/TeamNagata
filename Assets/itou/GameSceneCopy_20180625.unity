@@ -1197,7 +1197,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1722623976246854, guid: bd36485155a49274b81b9e415fee0430, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd36485155a49274b81b9e415fee0430, type: 2}
@@ -1290,6 +1290,10 @@ Prefab:
     - target: {fileID: 1722623976246854, guid: bd36485155a49274b81b9e415fee0430, type: 2}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722623976246854, guid: bd36485155a49274b81b9e415fee0430, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd36485155a49274b81b9e415fee0430, type: 2}
@@ -2241,9 +2245,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1e55fa195515cae45ab1e8ca235979b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 85a449497d0fef841ba12eca4c1cceda, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
