@@ -23,6 +23,11 @@ public class ComboScript : MonoBehaviour {
             totalTime += Time.deltaTime * 45;
             count = (int)totalTime;
             Combolabel.text = count.ToString();
+
+            if(combo<count)
+            {
+                Combolabel.text = combo.ToString();
+            }
         }
     }
 }

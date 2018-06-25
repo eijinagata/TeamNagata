@@ -26,6 +26,11 @@ public class ScoreScript : MonoBehaviour
             totalTime += Time.deltaTime * 90;
             count = (int)totalTime;
             Scorelabel.text = count.ToString();
+
+            if(score<count)
+            {
+                Scorelabel.text = score.ToString();
+            }
         }
     }
 }
