@@ -6,8 +6,7 @@ public class EnemySpawnObjectController : MonoBehaviour
 {
     public GameObject enemy;    //生成するオブジェクト
     EnemyMove enemyMove;        //EnemyMove内のDATEアクセサーを使用したいから宣言
-    pauseController button;
-
+   
 	// Use this for initialization
 	void Start ()
     {

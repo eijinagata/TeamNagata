@@ -10,7 +10,6 @@ public class BallCreate : MonoBehaviour
     time timeScript;
     bool moveFlag = false;
     UnitLotate uniLot;
-    pauseController button;
    
 	// Use this for initialization
 	void Start ()

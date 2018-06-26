@@ -13,7 +13,6 @@ public class Move3 : MonoBehaviour
     bool unitFlag = false;  //親オブジェクトが動いてる？動いてない？を判断するフラグ
     GameObject gameObj;     //当たったオブジェクトを覚えておく変数
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
-    pauseController button;
     Pause pause;
 
     public void PlusSpeed(float value)
