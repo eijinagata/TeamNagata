@@ -255,6 +255,59 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 250901049}
+--- !u!1 &403608096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 403608097}
+  - component: {fileID: 403608098}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &403608097
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403608096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.074173, y: 1.829947, z: 90.057175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &403608098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403608096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0628a39da5a4c44793dadcf136d26f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Title: {fileID: 525820858}
+  ScoreTitle: {fileID: 631635901}
+  Score: {fileID: 441923895}
+  ComboTitle: {fileID: 1242008720}
+  Combo: {fileID: 490803189}
+  RankingTitle: {fileID: 789566475}
+  Ranking1: {fileID: 1185824171}
+  Ranking2: {fileID: 779173292}
+  Ranking3: {fileID: 1553473891}
+  Button1: {fileID: 588413274}
+  Button2: {fileID: 980817572}
+  scoreScript: {fileID: 441923899}
+  comboScript: {fileID: 490803193}
 --- !u!1 &441923895
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166b837c1b1383243ab77aa9bf7372d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxS: 0
   Scorelabel: {fileID: 441923897}
 --- !u!114 &441923900
 MonoBehaviour:
@@ -444,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3410982cea34354fb22db9242cf8bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxC: 0
   Combolabel: {fileID: 490803191}
 --- !u!114 &490803194
 MonoBehaviour:
