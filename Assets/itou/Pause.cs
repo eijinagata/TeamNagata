@@ -6,9 +6,9 @@ public class Pause : MonoBehaviour
 {
     [SerializeField]
     //　ポーズした時に表示するUI
-    private GameObject pauseUI;
+    //private GameObject pauseUI;
     //　ポーズUIのインスタンス
-    private GameObject instancePauseUI;
+    //private GameObject instancePauseUI;
 
     public GameObject image;
 
@@ -44,18 +44,18 @@ public class Pause : MonoBehaviour
 
     public void Click()
     {
-        if (instancePauseUI == null)
+        if (image.activeSelf == false)
         {
             moveFlag = true;
             image.SetActive(true);
-            instancePauseUI = GameObject.Instantiate(pauseUI) as GameObject;
+            //instancePauseUI = GameObject.Instantiate(image) as GameObject;
             Time.timeScale = 0f;
         }
         else
         {
             moveFlag = false;
             image.SetActive(false);
-            Destroy(instancePauseUI);
+            //Destroy(instancePauseUI);
             Time.timeScale = 1f;
         }
     }
