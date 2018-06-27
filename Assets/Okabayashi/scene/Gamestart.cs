@@ -57,14 +57,14 @@ public class Gamestart : MonoBehaviour
     public void stay()
     {
         pointer = false;
-        SceneManager.LoadScene("GameScene");
      //   this.animator.SetTrigger("off");
     }
 
     private IEnumerator Acti()
     {
         o = true;
-        for(int i = 0; i < 4; i++)
+        
+        for (int i = 0; i < 4; i++)
         {
             Br = 0;
             Ar = 0;
@@ -73,7 +73,7 @@ public class Gamestart : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
             Debug.Log(i);
         }
-
+        SceneManager.LoadScene("GameScene");
         yield break;
     }
 }
