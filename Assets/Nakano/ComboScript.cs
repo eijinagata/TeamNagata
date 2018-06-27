@@ -7,7 +7,6 @@ public class ComboScript : MonoBehaviour
 {
     //絶対に使用しないように
     public bool MaxC = false;
-
     int combo = 50;
     public Text Combolabel;
     int count = 0;
