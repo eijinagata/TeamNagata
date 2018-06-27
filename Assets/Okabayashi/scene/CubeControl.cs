@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class CubeControl : MonoBehaviour
@@ -55,6 +56,7 @@ public class CubeControl : MonoBehaviour
     public void stay()
     {
         pointer = false;
+        SceneManager.LoadScene("GameScene");
      //   this.animator.SetTrigger("off");
     }
 
