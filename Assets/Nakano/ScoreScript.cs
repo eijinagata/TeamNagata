@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour
 {
+    //絶対に使用しないように
+    public bool MaxS = false;
 
     int score = 100;
     public Text Scorelabel;
     int count = 0;
-    bool swich = false;
     float totalTime;
 
     // Use this for initialization
@@ -26,6 +27,16 @@ public class ScoreScript : MonoBehaviour
             totalTime += Time.deltaTime * 90;
             count = (int)totalTime;
             Scorelabel.text = count.ToString();
+
+            if(score<count)
+            {
+                Scorelabel.text = score.ToString();
+                MaxS = true;
+            }
+            if(score==count)
+            {
+                MaxS = true;
+            }
         }
     }
 }
