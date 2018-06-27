@@ -143,7 +143,7 @@ public class EnemyMove : MonoBehaviour
             //タグがStageのオブジェクトに衝突したら
             if (other.gameObject.tag == "Stage")
             {
-                transform.parent = null;
+                //transform.parent = null;
 
                 transform.parent = other.gameObject.transform;
 
