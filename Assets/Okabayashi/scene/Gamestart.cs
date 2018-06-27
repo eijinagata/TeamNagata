@@ -57,6 +57,7 @@ public class Gamestart : MonoBehaviour
     public void stay()
     {
         pointer = false;
+        SceneManager.LoadScene("GameScene");
      //   this.animator.SetTrigger("off");
     }
 

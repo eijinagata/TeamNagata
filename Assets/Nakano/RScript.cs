@@ -9,7 +9,7 @@ public class RScript : MonoBehaviour
     public void ButtonPush()
     {
         //Debug.Log("LoadScene");
-        SceneManager.LoadScene("GamaSene");
+        SceneManager.LoadScene("GameScene");
     }
 
 	// Use this for initialization
