@@ -16,6 +16,7 @@ public class EnemyMove : MonoBehaviour
     UnitLotate uniLot;      //UnitLotate内の変数が欲しいので宣言
     public GameObject my;   //自分を覚えるための変数
     Pause pause;
+    BoxCollider boxCollider;
 
     //変数名dateにアクセスしたいときに使う
     public int DATE
@@ -75,6 +76,9 @@ public class EnemyMove : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        boxCollider = GetComponent<BoxCollider>();
+        boxCollider.enabled = false;
+        boxCollider.enabled = true;
         pause = GameObject.Find("Button").GetComponent<Pause>();
         //button = FindObjectOfType<pauseController>();
         date++;
