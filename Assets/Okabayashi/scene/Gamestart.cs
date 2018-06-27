@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
-public class CubeControl : MonoBehaviour
+public class Gamestart : MonoBehaviour
 {
    // Animator animator;
     GameObject Name;
     Rigidbody rigidBody;
+
     public float Br = 1;
     float Ar = 1;
     public bool pointer = false;
@@ -70,6 +72,7 @@ public class CubeControl : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
             Debug.Log(i);
         }
+
         yield break;
     }
 }
