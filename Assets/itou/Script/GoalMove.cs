@@ -33,8 +33,9 @@ public class GoalMove : MonoBehaviour {
         {
             audioPlus.PlayOneShot(audioPlus.clip);
             Score.AddScore(GetCombo.ComboCount());
-            GetCombo.active();
             Destroy(other.gameObject);
+            GetCombo.active();
+            //Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "Enemy")

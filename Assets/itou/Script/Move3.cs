@@ -48,7 +48,7 @@ public class Move3 : MonoBehaviour
                         countr++;
                         break;
                     case 2:
-                        Destroy(gameObject);
+                        transform.Rotate(new Vector3(0.0f, 270.0f, 0.0f));
                         break;
                     default:
                         break;
